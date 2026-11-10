@@ -534,17 +534,20 @@
   "3093": {
    "nome": "Detergente Limpol Limão",
    "emb": "24x500ml",
-   "cat": "Limpeza e higiene"
+   "cat": "Limpeza e higiene",
+   "foto": "3093-detergente-limpol-limao.webp"
   },
   "3094": {
    "nome": "Detergente Limpol Maçã",
    "emb": "24x500ml",
-   "cat": "Limpeza e higiene"
+   "cat": "Limpeza e higiene",
+   "foto": "3094-detergente-limpol-maca.webp"
   },
   "3095": {
    "nome": "Detergente Limpol Neutro",
    "emb": "24x500ml",
-   "cat": "Limpeza e higiene"
+   "cat": "Limpeza e higiene",
+   "foto": "3095-detergente-limpol-neutro.webp"
   },
   "3096": {
    "nome": "Água Sanitária Brinort",
@@ -754,7 +757,8 @@
   "3132": {
    "nome": "Detergente Limpol Cristal",
    "emb": "24x500ml",
-   "cat": "Limpeza e higiene"
+   "cat": "Limpeza e higiene",
+   "foto": "3132-detergente-limpol-cristal.webp"
   },
   "3133": {
    "nome": "Biscoito Richester Escureto",
