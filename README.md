@@ -2,15 +2,17 @@
 
 Catálogo com pedido pelo WhatsApp. Publicado em https://jdmercadoatacado.netlify.app/
 
-## Como alterar preços e produtos
-Tudo fica em `index.html`, na lista `const raw=[ ... ]`. Cada produto é uma linha:
+## Atualizar preços e estoque (planilha do Hiper)
+1. No Hiper, exporte a **Listagem de produtos** em CSV (colunas: Produto; Preço de venda; Estoque; Código de barras).
+2. No GitHub, abra este repositório → **Add file → Upload files** → arraste o arquivo `Listagemdeprodutos_....csv` → **Commit changes**.
+3. O Netlify publica sozinho. O site usa sempre a planilha mais recente (maior número no nome do arquivo).
 
-```
-["Categoria","Nome do produto","Embalagem",preço],
-```
+- Estoque zerado ou negativo → aparece como **Fora de estoque**, com foto fosca e botão "Avisar quando chegar".
+- A quantidade em estoque não aparece no site, e a planilha não fica acessível pelo endereço do site.
+- Cada envio gera uma publicação (15 créditos do plano grátis do Netlify): envie no máximo 1–2 vezes por semana.
 
-- Preço com ponto, não vírgula: `129.9`. Use `null` para "Preço sob consulta".
-- Embalagem no formato `30x1kg`, `24x320g`, `12x1L`, `20kg` ou `25x100`: o site calcula sozinho o preço por kg ou por unidade.
-- A foto é ligada pelo nome do produto na lista `photos`. Fotos ficam em `imagens/`, em `.webp`, 400×400 px.
+## Nome, categoria e foto de cada produto
+Ficam em `dados/produtos.json`, pelo código do Hiper. Produto novo que ainda não está lá entra no site com o nome do Hiper na categoria "Outros".
+Fotos ficam em `imagens/`, em `.webp`, 400×400 px.
 
-Cada alteração enviada para o GitHub é publicada automaticamente pelo Netlify.
+Para testar localmente: `node scripts/gerar-catalogo.js` e abrir `index.html`.
