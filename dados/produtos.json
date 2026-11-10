@@ -366,7 +366,8 @@
   "3063": {
    "nome": "Batata Palha Qualimax Tradicional",
    "emb": "20x100g",
-   "cat": "Snacks"
+   "cat": "Snacks",
+   "foto": "3063-batata-palha-qualimax-tradicional.webp"
   },
   "3064": {
    "nome": "Leite Líquido Italac",
@@ -382,7 +383,8 @@
   "3066": {
    "nome": "Wafer Escureto Richester",
    "emb": "30x80g",
-   "cat": "Biscoitos"
+   "cat": "Biscoitos",
+   "foto": "3066-wafer-escureto.webp"
   },
   "3067": {
    "nome": "Wafer Chocolate Amori",
@@ -592,7 +594,8 @@
   "3104": {
    "nome": "Batata Ruffles Original",
    "emb": "14x100g",
-   "cat": "Snacks"
+   "cat": "Snacks",
+   "foto": "3104-ruffles-original.webp"
   },
   "3105": {
    "nome": "Asa de Frango Sadia",
@@ -609,7 +612,8 @@
   "3107": {
    "nome": "Bombom Garoto",
    "emb": "220g",
-   "cat": "Doces e complementos"
+   "cat": "Doces e complementos",
+   "foto": "3107-bombom-garoto.webp"
   },
   "3108": {
    "nome": "Bebida Láctea Mocoquinha",
