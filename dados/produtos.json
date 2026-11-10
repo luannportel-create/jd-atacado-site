@@ -387,7 +387,8 @@
   "3067": {
    "nome": "Wafer Chocolate Amori",
    "emb": "30x80g",
-   "cat": "Biscoitos"
+   "cat": "Biscoitos",
+   "foto": "3067-wafer-amori-chocolate.webp"
   },
   "3068": {
    "nome": "Wafer Morango Amori",
@@ -408,7 +409,8 @@
   "3071": {
    "nome": "Biscoito Recheado Chocolate Amori",
    "emb": "36x125g",
-   "cat": "Biscoitos"
+   "cat": "Biscoitos",
+   "foto": "3071-biscoito-amori-chocolate.webp"
   },
   "3072": {
    "nome": "Fralda Huggies G",
@@ -676,7 +678,8 @@
   "3119": {
    "nome": "Rosquinha Hiléia Chocolate",
    "emb": "30x100g",
-   "cat": "Biscoitos"
+   "cat": "Biscoitos",
+   "foto": "3119-rosquinha-hileia-chocolate.webp"
   },
   "3120": {
    "nome": "Rosquinha Hiléia Coco",
@@ -750,7 +753,8 @@
   "3133": {
    "nome": "Biscoito Richester Escureto",
    "emb": "36x125g",
-   "cat": "Biscoitos"
+   "cat": "Biscoitos",
+   "foto": "3133-biscoito-escureto.webp"
   },
   "3134": {
    "nome": "Amaciante Brinort Premium",
