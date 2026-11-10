@@ -279,7 +279,8 @@
   "3048": {
    "nome": "Leite Condensado Mococa",
    "emb": "27x395g",
-   "cat": "Leites e derivados"
+   "cat": "Leites e derivados",
+   "foto": "3048-leite-condensado-mococa.webp"
   },
   "3049": {
    "nome": "Leite Condensado Moça",
@@ -326,12 +327,14 @@
   "3056": {
    "nome": "Café Santa Clara",
    "emb": "20x250g",
-   "cat": "Cafés"
+   "cat": "Cafés",
+   "foto": "3056-cafe-santa-clara-250g.webp"
   },
   "3057": {
    "nome": "Café Kimimo",
    "emb": "50x100g",
-   "cat": "Cafés"
+   "cat": "Cafés",
+   "foto": "3057-cafe-kimimo-100g.webp"
   },
   "3058": {
    "nome": "Carne Moída Bonacarne",
@@ -451,7 +454,8 @@
   "3079": {
    "nome": "Nescau Lata",
    "emb": "36x350g",
-   "cat": "Achocolatados e mingaus"
+   "cat": "Achocolatados e mingaus",
+   "foto": "3079-nescau-350g.webp"
   },
   "3080": {
    "nome": "Copo Descartável Copobras Branco 180ml",
@@ -569,7 +573,8 @@
   "3101": {
    "nome": "Leite em Pó Integral Piracanjuba",
    "emb": "25x400g",
-   "cat": "Leites e derivados"
+   "cat": "Leites e derivados",
+   "foto": "3101-leite-po-piracanjuba.webp"
   },
   "3102": {
    "nome": "Leite em Pó Integral Ninho",
