@@ -756,16 +756,14 @@
    "cat": "Limpeza e higiene"
   },
   "3136": {
-   "nome": "Queijo Mussarela Fatiado Real Lat",
+   "nome": "Queijo Mussarela Real",
    "emb": "200g",
-   "cat": "Frios e congelados",
-   "foto": "3136-queijo-mussarela-real-lat.webp"
+   "cat": "Frios e congelados"
   },
   "3137": {
-   "nome": "Presunto Fatiado Real Lat",
+   "nome": "Presunto de Peru Fatiado",
    "emb": "200g",
-   "cat": "Frios e congelados",
-   "foto": "3137-presunto-real-lat.webp"
+   "cat": "Frios e congelados"
   }
  }
 }
