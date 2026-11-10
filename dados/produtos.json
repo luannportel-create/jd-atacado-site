@@ -351,7 +351,8 @@
   "3060": {
    "nome": "Lava-roupas Brinort Blue",
    "emb": "6x1L",
-   "cat": "Limpeza e higiene"
+   "cat": "Limpeza e higiene",
+   "foto": "3060-lava-roupas-brinort-blue.webp"
   },
   "3061": {
    "nome": "Sabão em Pó Ala Flor de Lis",
@@ -529,7 +530,8 @@
   "3092": {
    "nome": "Detergente Limpol Coco",
    "emb": "24x500ml",
-   "cat": "Limpeza e higiene"
+   "cat": "Limpeza e higiene",
+   "foto": "3092-detergente-limpol-coco.webp"
   },
   "3093": {
    "nome": "Detergente Limpol Limão",
@@ -558,7 +560,8 @@
   "3097": {
    "nome": "Lava-roupas Brinort Green",
    "emb": "6x1L",
-   "cat": "Limpeza e higiene"
+   "cat": "Limpeza e higiene",
+   "foto": "3097-lava-roupas-brinort-green.webp"
   },
   "3098": {
    "nome": "Papel Higiênico Flor de Lótus",
