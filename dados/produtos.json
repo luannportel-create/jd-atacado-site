@@ -350,7 +350,7 @@
   },
   "3060": {
    "nome": "Lava-roupas Brinort Blue",
-   "emb": "6x1L",
+   "emb": "6x2L",
    "cat": "Limpeza e higiene",
    "foto": "3060-lava-roupas-brinort-blue.webp"
   },
@@ -379,7 +379,8 @@
   "3065": {
    "nome": "Sabão em Pó Ala Lavanda",
    "emb": "27x400g",
-   "cat": "Limpeza e higiene"
+   "cat": "Limpeza e higiene",
+   "foto": "3065-sabao-po-ala-lavanda.webp"
   },
   "3066": {
    "nome": "Wafer Escureto Richester",
@@ -559,7 +560,7 @@
   },
   "3097": {
    "nome": "Lava-roupas Brinort Green",
-   "emb": "6x1L",
+   "emb": "6x2L",
    "cat": "Limpeza e higiene",
    "foto": "3097-lava-roupas-brinort-green.webp"
   },
