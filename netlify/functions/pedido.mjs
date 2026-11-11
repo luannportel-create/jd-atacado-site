@@ -7,8 +7,19 @@ import { IGNORAR, chamar, listarPaginado, precoParaQuantidade } from '../lib/hip
 // O Hiper exige meio de pagamento no pedido. Como o site não pergunta, vai um padrão e a equipe ajusta
 // no faturamento (HIPER_PAGAMENTO_PADRAO no Netlify: 1 Dinheiro, 12 PIX, 6 Crediário...).
 const PAGAMENTO_PADRAO = () => Number(process.env.HIPER_PAGAMENTO_PADRAO) || 1;
-// E-mail que vai no pedido quando o cliente não informa (HIPER_EMAIL_PADRAO no Netlify). Sem ele, o campo não é enviado.
-const EMAIL_PADRAO = () => String(process.env.HIPER_EMAIL_PADRAO || '').trim();
+
+// CLIENTE-CORINGA: o pedido via API sobrescreve o cadastro do cliente no Hiper com os dados enviados
+// (comprovado no pedido LV75). Por isso todo pedido do site entra num cliente fixo, com o CNPJ da própria JD,
+// e a equipe troca para o cliente real (CNPJ e telefone vêm no alerta do WhatsApp) antes de faturar.
+// Os dados abaixo são sempre os mesmos, então a "sobrescrita" não altera nada.
+const JD = { bairro: 'São Lázaro', cep: '69073570', codigoIbge: 1302603, complemento: '', logradouro: 'Rua Jonas Barreto', numero: '584' };
+const CLIENTE_CORINGA = () => ({
+  documento: '59422148000167',
+  email: String(process.env.HIPER_EMAIL_PADRAO || 'pedidos-site@example.com').trim(),
+  inscricaoEstadual: '',
+  nomeDoCliente: 'PEDIDO DO SITE - TROCAR CLIENTE',
+  nomeFantasia: 'PEDIDO DO SITE',
+});
 
 const so = s => String(s || '').replace(/\D/g, '');
 const texto = (s, max) => String(s || '').replace(/[\u0000-\u001f]/g, ' ').trim().slice(0, max);
@@ -75,6 +86,7 @@ export function montarPedido(dados, produtosHiper) {
 
   const observacao = [
     `Pedido pelo site ${numero}`.trim(),
+    `TROCAR CLIENTE PARA: ${nome} - CNPJ/CPF ${so(dados.documento)}`,
     `Tel: ${telefone}`,
     `Município: ${municipio}`,
     'Pagamento: a combinar',
@@ -85,12 +97,9 @@ export function montarPedido(dados, produtosHiper) {
     total,
     itens: itens.map(({ _cod, ...i }) => ({ ...i, cod: _cod })),
     pedido: {
-      // Só vai o que temos: campo vazio o Hiper recusa como "formato inválido".
-      cliente: {
-        documento: so(dados.documento),
-        nomeDoCliente: nome,
-        ...(EMAIL_PADRAO() ? { email: EMAIL_PADRAO() } : {}),
-      },
+      cliente: CLIENTE_CORINGA(),
+      enderecoDeCobranca: JD,
+      enderecoDeEntrega: JD,
       itens: itens.map(({ _cod, ...i }) => i),
       meiosDePagamento: [{ idMeioDePagamento: PAGAMENTO_PADRAO(), parcelas: 1, valor: total }],
       numeroPedidoDeVenda: numero,
@@ -102,10 +111,8 @@ export function montarPedido(dados, produtosHiper) {
 
 export default async (req, context) => {
   if (req.method !== 'POST') return resposta(405, { erro: 'Use POST.' });
-  // DESLIGADO: o pedido via API sobrescreve o cadastro do cliente no Hiper com os dados enviados
-  // (nome, e-mail, endereço). Só religar (HIPER_PEDIDOS_ATIVOS=sim) se o Hiper deixar de sobrescrever
-  // ou se o site enviar exatamente os dados do cadastro.
-  if (String(process.env.HIPER_PEDIDOS_ATIVOS || '').toLowerCase() !== 'sim') return resposta(503, { erro: 'envio automático ao Hiper desligado' });
+  // Desliga o envio ao Hiper sem mexer no código: HIPER_PEDIDOS_ATIVOS=nao no Netlify.
+  if (String(process.env.HIPER_PEDIDOS_ATIVOS || '').toLowerCase() === 'nao') return resposta(503, { erro: 'envio automático ao Hiper desligado' });
   if (limiteAtingido(context?.ip || 'sem-ip')) return resposta(429, { erro: 'Muitos pedidos em sequência. Aguarde alguns minutos ou fale pelo WhatsApp.' });
   let dados;
   try { dados = await req.json(); } catch { return resposta(400, { erro: 'Pedido inválido.' }); }

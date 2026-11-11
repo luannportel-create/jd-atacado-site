@@ -160,7 +160,7 @@ btn.disabled=false;btn.textContent=txt;
 if(recusado){if(win)win.close();alert(erro);return}
 const precoSrv=reg?Object.fromEntries((reg.itens||[]).map(i=>[String(i.cod),i.preco])):{};
 let total=0;const lines=ids.map(id=>{const p=products[id],pu=precoSrv[p.cod]??priceFor(p,cart[id]),sub=pu*cart[id];total+=sub;return `• ${cart[id]} × ${p.name} (${p.pack}) [cód. ${p.cod}] — ${money(sub)}`});if(reg&&reg.total)total=reg.total;
-const status=reg?`✅ *Registrado no sistema Hiper* — nº ${numero}`:`⚠️ *NÃO registrado no sistema* (${erro}) — lançar manualmente`;
+const status=reg?`✅ *Lançado no Hiper* (nº site ${numero}) — no cliente *PEDIDO DO SITE*: trocar para o CNPJ/CPF abaixo antes de faturar`:`⚠️ *NÃO registrado no sistema* (${erro}) — lançar manualmente`;
 const msg=`🛒 *PEDIDO ${numero} — JD MERCADO ATACADO*\n${status}\n\n*Responsável:* ${name}\n*CNPJ/CPF:* ${fmtDoc(doc)}\n*WhatsApp:* ${phone}\n*Município:* ${city}\n\n*PRODUTOS:*\n${lines.join('\n')}\n\n*Total: ${money(total)}*\n\n*Observações:* ${notes||'Nenhuma'}\n\nAguardo confirmação de disponibilidade e condições de entrega/embarque.`;
 storeIds('jd_last_order_v3','jd_last_order_v2',Object.fromEntries(ids.map(id=>[id,cart[id]])));lembrarCliente();
 const url=`https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`;if(win&&!win.closed)win.location.href=url;else location.href=url;
