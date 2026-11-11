@@ -100,7 +100,49 @@ export function montarPedido(dados, produtosHiper) {
   };
 }
 
+// Só na prévia: /api/pedido?teste=CNPJ tenta formatos de pedido (1 unidade do produto mais barato) do mais
+// simples ao mais completo, para no primeiro que o Hiper aceitar e cancela esse pedido na hora.
+async function testarFormatos(documento) {
+  const produtos = (await listarPaginado()).filter(p => p.ativo !== false && p.removido !== true && !IGNORAR.has(String(p.codigo)) && Number(p.preco) > 0 && p.id);
+  const p = produtos.sort((a, b) => a.preco - b.preco)[0];
+  if (!p) return { erro: 'nenhum produto com preço' };
+  const base = {
+    itens: [{ produtoId: p.id, quantidade: 1, precoUnitarioBruto: Number(p.preco), precoUnitarioLiquido: Number(p.preco) }],
+    meiosDePagamento: [{ idMeioDePagamento: 1, parcelas: 1, valor: Number(p.preco) }],
+    numeroPedidoDeVenda: 'TESTE-SITE',
+    observacaoDoPedidoDeVenda: 'TESTE AUTOMÁTICO DO SITE - cancelado automaticamente',
+    valorDoFrete: 0,
+  };
+  const vazio = { bairro: '', cep: '', codigoIbge: 0, complemento: '', logradouro: '', numero: '' };
+  const jd = { bairro: 'São Lázaro', cep: '69073570', codigoIbge: 1302603, complemento: '', logradouro: 'Rua Jonas Barreto', numero: '584' };
+  const cliente = email => ({ documento: so(documento), email, inscricaoEstadual: '', nomeDoCliente: 'Cliente teste site', nomeFantasia: '' });
+  const formatos = {
+    '1_estrutura_completa_campos_vazios': { cliente: cliente(''), enderecoDeCobranca: vazio, enderecoDeEntrega: vazio, ...base },
+    '2_com_email_de_teste': { cliente: cliente('teste@exemplo.com'), enderecoDeCobranca: vazio, enderecoDeEntrega: vazio, ...base },
+    '3_com_email_e_endereco_da_JD': { cliente: cliente('teste@exemplo.com'), enderecoDeCobranca: jd, enderecoDeEntrega: jd, ...base },
+  };
+  const out = { produtoDoTeste: `${p.codigo} ${p.nome} R$ ${p.preco}` };
+  for (const [nome, corpo] of Object.entries(formatos)) {
+    try {
+      const r = await chamar('/pedido-de-venda/', { metodo: 'POST', corpo });
+      if (r?.errors?.length) { out[nome] = 'recusado: ' + r.errors.join(' | '); continue; }
+      out[nome] = `ACEITO (id ${r?.id}) ${r?.message || ''}`;
+      try {
+        const c = await chamar(`/pedido-de-venda/cancelar/${encodeURIComponent(r.id)}`, { metodo: 'PUT' });
+        out.cancelamento = c?.message || 'cancelamento enviado';
+      } catch (e) { out.cancelamento = 'FALHOU, cancele no Hiper: ' + e.message; }
+      break;
+    } catch (e) { out[nome] = e.message; }
+  }
+  return out;
+}
+
 export default async (req, context) => {
+  const teste = new URL(req.url).searchParams.get('teste');
+  if (req.method === 'GET' && teste && context?.deploy?.context !== 'production') {
+    if (!documentoValido(teste)) return resposta(400, { erro: 'CNPJ/CPF inválido' });
+    try { return resposta(200, await testarFormatos(teste)); } catch (e) { return resposta(502, { erro: e.message }); }
+  }
   if (req.method !== 'POST') return resposta(405, { erro: 'Use POST.' });
   if (limiteAtingido(context?.ip || 'sem-ip')) return resposta(429, { erro: 'Muitos pedidos em sequência. Aguarde alguns minutos ou fale pelo WhatsApp.' });
   let dados;

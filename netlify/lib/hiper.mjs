@@ -43,7 +43,7 @@ async function detalheDoErro(r) {
     const d = JSON.parse(t);
     const partes = [d.message, d.title, ...(Array.isArray(d.errors) ? d.errors : d.errors ? Object.values(d.errors).flat() : [])]
       .filter(Boolean).map(x => typeof x === 'string' ? x : JSON.stringify(x));
-    return partes.join(' | ').slice(0, 300);
+    return (partes.length ? partes.join(' | ') : t).slice(0, 300);
   } catch {
     return t.slice(0, 200);
   }
