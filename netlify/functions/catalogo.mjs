@@ -29,12 +29,32 @@ async function obterToken(forcar = false) {
   return token;
 }
 
+class ErroHiper extends Error {
+  constructor(status, caminho, detalhe) {
+    super(`Hiper respondeu HTTP ${status} em ${caminho.split('?')[0]}${detalhe ? ': ' + detalhe : ''}`);
+    this.status = status;
+  }
+}
+
+// Mensagem que o Hiper devolve no erro (campos "message"/"errors"), sem dados sensíveis.
+async function detalheDoErro(r) {
+  const t = await r.text().catch(() => '');
+  try {
+    const d = JSON.parse(t);
+    const partes = [d.message, d.title, ...(Array.isArray(d.errors) ? d.errors : d.errors ? Object.values(d.errors).flat() : [])]
+      .filter(Boolean).map(x => typeof x === 'string' ? x : JSON.stringify(x));
+    return partes.join(' | ').slice(0, 300);
+  } catch {
+    return t.slice(0, 200);
+  }
+}
+
 async function chamar(caminho) {
   for (let tentativa = 0; tentativa < 3; tentativa++) {
     const r = await fetch(API + caminho, { headers: { Authorization: `Bearer ${await obterToken(tentativa > 0)}` } });
     if (r.status === 401) continue; // token vencido: gera outro e tenta de novo
     if (r.status === 429) { await new Promise(ok => setTimeout(ok, 1000 * 2 ** tentativa)); continue; }
-    if (!r.ok) throw new Error(`Hiper respondeu HTTP ${r.status} em ${caminho.split('?')[0]}`);
+    if (!r.ok) throw new ErroHiper(r.status, caminho, await detalheDoErro(r));
     return r.json();
   }
   throw new Error(`Hiper não respondeu em ${caminho.split('?')[0]}`);
@@ -71,20 +91,58 @@ function resumir(p) {
   };
 }
 
-export async function buscarCatalogo() {
+async function listarPaginado() {
   const todos = [];
   const vistos = new Set();
   for (let pagina = 1; pagina <= 100; pagina++) {
-    const lista = extrairLista(await chamar(`/produtos/listagemDeProdutos?pontoDeSincronizacao=0&pagina=${pagina}`));
+    let lista;
+    try {
+      lista = extrairLista(await chamar(`/produtos/listagemDeProdutos?pontoDeSincronizacao=0&pagina=${pagina}`));
+    } catch (e) {
+      if (pagina > 1 && e.status === 400) break; // o Hiper responde 400 quando a página não existe
+      throw e;
+    }
     const novos = lista.filter(p => p && p.codigo != null && !vistos.has(p.id || p.codigo));
     if (!novos.length) break; // fim das páginas (ou a API repetiu a última página)
     novos.forEach(p => vistos.add(p.id || p.codigo));
     todos.push(...novos);
   }
+  return todos;
+}
+
+export async function buscarCatalogo() {
+  let todos;
+  try {
+    todos = await listarPaginado();
+  } catch (e) {
+    // Reserva: rota de sincronização (sem preços de atacado por faixa).
+    if (e.status !== 400 && e.status !== 404) throw e;
+    try {
+      todos = extrairLista(await chamar('/produtos/pontoDeSincronizacao?pontoDeSincronizacao=0'));
+    } catch (e2) {
+      throw new Error(`${e.message} || reserva: ${e2.message}`);
+    }
+  }
   return todos.filter(p => p.ativo !== false && p.removido !== true).map(resumir);
 }
 
-export default async () => {
+// /api/catalogo?diag=1 mostra só a estrutura das respostas do Hiper (sem preços, estoque ou chave).
+async function diagnostico() {
+  const out = {};
+  const forma = d => Array.isArray(d)
+    ? { tipo: 'lista', itens: d.length, campos: d[0] ? Object.keys(d[0]) : [] }
+    : { tipo: 'objeto', campos: Object.keys(d || {}), listas: Object.fromEntries(Object.entries(d || {}).filter(([, v]) => Array.isArray(v)).map(([k, v]) => [k, { itens: v.length, campos: v[0] ? Object.keys(v[0]) : [] }])) };
+  try { await obterToken(true); out.token = 'ok'; } catch (e) { out.token = e.message; return out; }
+  for (const c of ['/produtos/listagemDeProdutos?pontoDeSincronizacao=0&pagina=1', '/produtos/listagemDeProdutos?pontoDeSincronizacao=0&pagina=0', '/produtos/pontoDeSincronizacao?pontoDeSincronizacao=0']) {
+    try { out[c] = forma(await chamar(c)); } catch (e) { out[c] = e.message; }
+  }
+  return out;
+}
+
+export default async (req) => {
+  if (new URL(req.url).searchParams.get('diag') === '1') {
+    return new Response(JSON.stringify(await diagnostico(), null, 1), { headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' } });
+  }
   try {
     const produtos = await buscarCatalogo();
     return new Response(JSON.stringify({ atualizado: new Date().toISOString(), produtos }), {
