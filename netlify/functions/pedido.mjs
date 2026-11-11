@@ -4,6 +4,12 @@
 // O pedido entra em aberto (não faturado): a equipe confere estoque, frete e pagamento antes de faturar.
 import { IGNORAR, chamar, listarPaginado, precoParaQuantidade } from '../lib/hiper.mjs';
 
+// O Hiper exige meio de pagamento no pedido. Como o site não pergunta, vai um padrão e a equipe ajusta
+// no faturamento (HIPER_PAGAMENTO_PADRAO no Netlify: 1 Dinheiro, 12 PIX, 6 Crediário...).
+const PAGAMENTO_PADRAO = () => Number(process.env.HIPER_PAGAMENTO_PADRAO) || 1;
+// E-mail que vai no pedido quando o cliente não informa (HIPER_EMAIL_PADRAO no Netlify). Sem ele, o campo não é enviado.
+const EMAIL_PADRAO = () => String(process.env.HIPER_EMAIL_PADRAO || '').trim();
+
 const so = s => String(s || '').replace(/\D/g, '');
 const texto = (s, max) => String(s || '').replace(/[\u0000-\u001f]/g, ' ').trim().slice(0, max);
 
@@ -71,6 +77,7 @@ export function montarPedido(dados, produtosHiper) {
     `Pedido pelo site ${numero}`.trim(),
     `Tel: ${telefone}`,
     `Município: ${municipio}`,
+    'Pagamento: a combinar',
     obs && `Obs: ${obs}`,
   ].filter(Boolean).join(' | ');
 
@@ -78,14 +85,14 @@ export function montarPedido(dados, produtosHiper) {
     total,
     itens: itens.map(({ _cod, ...i }) => ({ ...i, cod: _cod })),
     pedido: {
+      // Só vai o que temos: campo vazio o Hiper recusa como "formato inválido".
       cliente: {
         documento: so(dados.documento),
-        email: '',
-        inscricaoEstadual: '',
         nomeDoCliente: nome,
-        nomeFantasia: '',
+        ...(EMAIL_PADRAO() ? { email: EMAIL_PADRAO() } : {}),
       },
       itens: itens.map(({ _cod, ...i }) => i),
+      meiosDePagamento: [{ idMeioDePagamento: PAGAMENTO_PADRAO(), parcelas: 1, valor: total }],
       numeroPedidoDeVenda: numero,
       observacaoDoPedidoDeVenda: observacao.slice(0, 500),
       valorDoFrete: 0,
