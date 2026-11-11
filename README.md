@@ -2,7 +2,15 @@
 
 Catálogo com pedido pelo WhatsApp. Publicado em https://jdmercadoatacado.netlify.app/
 
-## Atualizar preços e estoque (planilha do Hiper)
+## Preço e estoque ao vivo (API do Hiper)
+O site busca preço e estoque direto no Hiper, pela API da Loja Virtual (`netlify/functions/catalogo.mjs`, endereço `/api/catalogo`).
+- A chave de segurança fica no Netlify, em **Project configuration → Environment variables → `HIPER_CHAVE`**. Ela nunca vai para o navegador.
+- A resposta fica guardada por 10 minutos: mudança de preço no Hiper aparece no site em até ~10 min, **sem republicar e sem gastar créditos de publicação**.
+- Só aparecem produtos marcados para a loja virtual no Hiper, ativos e não removidos. Preço vem da tabela escolhida em Vendas → Loja virtual.
+- Preço por quantidade (preço de atacado do Hiper) aparece no card e é aplicado no pedido.
+- Se a API falhar ou vier quase vazia, o site usa o catálogo gravado (`catalogo.js`, gerado da última planilha).
+
+## Atualizar preços e estoque pela planilha (reserva, se a API estiver desligada)
 1. No Hiper, exporte a **Listagem de produtos** em CSV (colunas: Produto; Preço de venda; Estoque; Código de barras).
 2. No GitHub, abra este repositório → **Add file → Upload files** → arraste o arquivo `Listagemdeprodutos_....csv` → **Commit changes**.
 3. O Netlify publica sozinho. O site usa sempre a planilha mais recente (maior número no nome do arquivo).
