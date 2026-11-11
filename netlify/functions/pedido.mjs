@@ -144,6 +144,9 @@ export default async (req, context) => {
     try { return resposta(200, await testarFormatos(teste)); } catch (e) { return resposta(502, { erro: e.message }); }
   }
   if (req.method !== 'POST') return resposta(405, { erro: 'Use POST.' });
+  // Desligado até confirmar com o Hiper que o pedido não sobrescreve nem duplica o cadastro do cliente.
+  // Para religar: HIPER_PEDIDOS_ATIVOS=sim no Netlify.
+  if (String(process.env.HIPER_PEDIDOS_ATIVOS || '').toLowerCase() !== 'sim') return resposta(503, { erro: 'envio automático ao Hiper desligado' });
   if (limiteAtingido(context?.ip || 'sem-ip')) return resposta(429, { erro: 'Muitos pedidos em sequência. Aguarde alguns minutos ou fale pelo WhatsApp.' });
   let dados;
   try { dados = await req.json(); } catch { return resposta(400, { erro: 'Pedido inválido.' }); }
