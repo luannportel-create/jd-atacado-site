@@ -70,6 +70,9 @@ function extrairLista(d) {
   return arr || [];
 }
 
+// Orientação do Hiper: disponível = estoque total − reservado (a API não entrega o disponível pronto).
+const disponivel = p => (Number(p.quantidadeEmEstoque) || 0) - (Number(p.quantidadeEmEstoqueReservado) || 0);
+
 const titulo = s => String(s || '').toLowerCase().replace(/(^|\s)(\S)/g, (m, a, b) => a + b.toUpperCase()).trim();
 
 function resumir(p) {
@@ -88,7 +91,7 @@ function resumir(p) {
     nome: titulo(e ? nomeHiper.slice(0, e.index) : nomeHiper),
     emb: e ? e[1].toLowerCase().replace(/l$/, 'L') : '',
     preco: Number.isFinite(preco) && preco > 0 ? preco : null,
-    disp: Number(p.quantidadeEmEstoque) > 0, // a quantidade não sai daqui, só se tem ou não
+    disp: disponivel(p) > 0, // a quantidade não sai daqui, só se tem ou não
     ...(faixas.length ? { atacado: faixas } : {}),
   };
 }
@@ -151,21 +154,23 @@ async function diagnosticoProduto(cod) {
     const todos = await listarPaginado();
     const p = todos.find(x => String(x.codigo) === cod);
     if (!p) return { ...out, listagem: 'produto não encontrado na listagem da Loja Virtual' };
-    out.listagem = { nome: p.nome, ativo: p.ativo, removido: p.removido, preco: p.preco, quantidadeEmEstoque: p.quantidadeEmEstoque, quantidadeEmEstoqueReservado: p.quantidadeEmEstoqueReservado };
+    out.listagem = { nome: p.nome, ativo: p.ativo, removido: p.removido, preco: p.preco, quantidadeEmEstoque: p.quantidadeEmEstoque, quantidadeEmEstoqueReservado: p.quantidadeEmEstoqueReservado, disponivel: disponivel(p) };
     try {
       const e = await chamar(`/estoques/pontoDeSincronizacao?ProdutoId=${encodeURIComponent(p.id)}`);
-      out.rotaDeEstoque = { quantidadeEmEstoque: e.quantidadeEmEstoque, pontoDeSincronizacao: e.pontoDeSincronizacao };
+      out.rotaDeEstoque = { quantidadeEmEstoque: e.quantidadeEmEstoque, quantidadeEmEstoqueReservado: e.quantidadeEmEstoqueReservado, pontoDeSincronizacao: e.pontoDeSincronizacao };
     } catch (e) { out.rotaDeEstoque = e.message; }
   } catch (e) { out.erro = e.message; }
   return out;
 }
 
-export default async (req) => {
+export default async (req, context) => {
+  // Diagnósticos mostram quantidade em estoque: só funcionam na prévia, nunca no site oficial.
+  const diagLiberado = context?.deploy?.context !== 'production';
   const cod = new URL(req.url).searchParams.get('cod');
-  if (cod && /^\d{1,10}$/.test(cod)) {
+  if (diagLiberado && cod && /^\d{1,10}$/.test(cod)) {
     return new Response(JSON.stringify(await diagnosticoProduto(cod), null, 1), { headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store', 'Netlify-CDN-Cache-Control': 'no-store' } });
   }
-  if (new URL(req.url).searchParams.get('diag') === '1') {
+  if (diagLiberado && new URL(req.url).searchParams.get('diag') === '1') {
     return new Response(JSON.stringify(await diagnostico(), null, 1), { headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' } });
   }
   try {
