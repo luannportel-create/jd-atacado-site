@@ -128,9 +128,27 @@ export async function buscarCatalogo() {
       throw new Error(`${e.message} || reserva: ${e2.message}`);
     }
   }
-  return todos
-    .filter(p => p.ativo !== false && p.removido !== true && !IGNORAR.has(String(p.codigo)))
-    .map(resumir);
+  const ativos = todos.filter(p => p.ativo !== false && p.removido !== true && !IGNORAR.has(String(p.codigo)));
+  await corrigirReservas(ativos);
+  return ativos.map(resumir);
+}
+
+// A listagem de produtos vem com a reserva zerada; a rota de estoque traz a reserva certa.
+// Consulta a rota de estoque só para quem tem estoque físico (sem estoque já está fora de qualquer jeito),
+// em lotes pequenos para não sobrecarregar o Hiper. Se uma consulta falhar, fica o valor da listagem.
+async function corrigirReservas(produtos, porLote = 8) {
+  const alvo = produtos.filter(p => p.id && Number(p.quantidadeEmEstoque) > 0);
+  for (let i = 0; i < alvo.length; i += porLote) {
+    await Promise.all(alvo.slice(i, i + porLote).map(async p => {
+      try {
+        const e = await chamar(`/estoques/pontoDeSincronizacao?ProdutoId=${encodeURIComponent(p.id)}`);
+        if (e && e.quantidadeEmEstoque != null) {
+          p.quantidadeEmEstoque = e.quantidadeEmEstoque;
+          p.quantidadeEmEstoqueReservado = e.quantidadeEmEstoqueReservado ?? p.quantidadeEmEstoqueReservado;
+        }
+      } catch { /* mantém o valor da listagem */ }
+    }));
+  }
 }
 
 // /api/catalogo?diag=1 mostra só a estrutura das respostas do Hiper (sem preços, estoque ou chave).
@@ -157,7 +175,8 @@ async function diagnosticoProduto(cod) {
     out.listagem = { nome: p.nome, ativo: p.ativo, removido: p.removido, preco: p.preco, quantidadeEmEstoque: p.quantidadeEmEstoque, quantidadeEmEstoqueReservado: p.quantidadeEmEstoqueReservado, disponivel: disponivel(p) };
     try {
       const e = await chamar(`/estoques/pontoDeSincronizacao?ProdutoId=${encodeURIComponent(p.id)}`);
-      out.rotaDeEstoque = { quantidadeEmEstoque: e.quantidadeEmEstoque, quantidadeEmEstoqueReservado: e.quantidadeEmEstoqueReservado, pontoDeSincronizacao: e.pontoDeSincronizacao };
+      out.rotaDeEstoque = { quantidadeEmEstoque: e.quantidadeEmEstoque, quantidadeEmEstoqueReservado: e.quantidadeEmEstoqueReservado, disponivel: disponivel(e), pontoDeSincronizacao: e.pontoDeSincronizacao };
+      out.siteMostra = disponivel(e) > 0 ? 'disponível' : 'fora de estoque';
     } catch (e) { out.rotaDeEstoque = e.message; }
   } catch (e) { out.erro = e.message; }
   return out;
@@ -174,8 +193,9 @@ export default async (req, context) => {
     return new Response(JSON.stringify(await diagnostico(), null, 1), { headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' } });
   }
   try {
+    const inicio = Date.now();
     const produtos = await buscarCatalogo();
-    return new Response(JSON.stringify({ atualizado: new Date().toISOString(), produtos }), {
+    return new Response(JSON.stringify({ atualizado: new Date().toISOString(), tempoMs: Date.now() - inicio, produtos }), {
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
         'Cache-Control': 'public, max-age=0, must-revalidate',
