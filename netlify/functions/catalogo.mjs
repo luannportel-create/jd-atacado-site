@@ -96,26 +96,31 @@ function resumir(p) {
   };
 }
 
+const pagina = n => chamar(`/produtos/listagemDeProdutos?pontoDeSincronizacao=0&pagina=${n}`)
+  .then(extrairLista)
+  .catch(e => { if (n > 1 && e.status === 400) return []; throw e; }); // o Hiper responde 400 quando a página não existe
+
+// Página 1 sozinha (gera o token); as seguintes de 4 em 4, em paralelo, até vir uma página vazia.
 async function listarPaginado() {
   const todos = [];
   const vistos = new Set();
-  for (let pagina = 1; pagina <= 100; pagina++) {
-    let lista;
-    try {
-      lista = extrairLista(await chamar(`/produtos/listagemDeProdutos?pontoDeSincronizacao=0&pagina=${pagina}`));
-    } catch (e) {
-      if (pagina > 1 && e.status === 400) break; // o Hiper responde 400 quando a página não existe
-      throw e;
-    }
+  const juntar = lista => {
     const novos = lista.filter(p => p && p.codigo != null && !vistos.has(p.id || p.codigo));
-    if (!novos.length) break; // fim das páginas (ou a API repetiu a última página)
     novos.forEach(p => vistos.add(p.id || p.codigo));
     todos.push(...novos);
+    return novos.length;
+  };
+  if (!juntar(await pagina(1))) return todos;
+  for (let n = 2; n <= 100; n += 4) {
+    const grupo = await Promise.all([n, n + 1, n + 2, n + 3].map(pagina));
+    let fim = false;
+    for (const lista of grupo) if (!juntar(lista)) { fim = true; break; }
+    if (fim) break;
   }
   return todos;
 }
 
-export async function buscarCatalogo() {
+export async function buscarCatalogo(inicio = Date.now()) {
   let todos;
   try {
     todos = await listarPaginado();
@@ -129,26 +134,31 @@ export async function buscarCatalogo() {
     }
   }
   const ativos = todos.filter(p => p.ativo !== false && p.removido !== true && !IGNORAR.has(String(p.codigo)));
-  await corrigirReservas(ativos);
-  return ativos.map(resumir);
+  const semConferir = await corrigirReservas(ativos, inicio);
+  return { produtos: ativos.map(resumir), semConferir };
 }
 
 // A listagem de produtos vem com a reserva zerada; a rota de estoque traz a reserva certa.
 // Consulta a rota de estoque só para quem tem estoque físico (sem estoque já está fora de qualquer jeito),
-// em lotes pequenos para não sobrecarregar o Hiper. Se uma consulta falhar, fica o valor da listagem.
-async function corrigirReservas(produtos, porLote = 8) {
-  const alvo = produtos.filter(p => p.id && Number(p.quantidadeEmEstoque) > 0);
-  for (let i = 0; i < alvo.length; i += porLote) {
-    await Promise.all(alvo.slice(i, i + porLote).map(async p => {
+// 16 por vez. O Netlify corta a função em 10 s: perto disso, para e os que faltaram ficam com o valor da listagem.
+async function corrigirReservas(produtos, inicio, simultaneas = 16, prazoMs = 7500) {
+  const fila = produtos.filter(p => p.id && Number(p.quantidadeEmEstoque) > 0);
+  let semConferir = 0;
+  const trabalhador = async () => {
+    while (fila.length) {
+      const p = fila.shift();
+      if (Date.now() - inicio > prazoMs) { semConferir++; continue; }
       try {
         const e = await chamar(`/estoques/pontoDeSincronizacao?ProdutoId=${encodeURIComponent(p.id)}`);
         if (e && e.quantidadeEmEstoque != null) {
           p.quantidadeEmEstoque = e.quantidadeEmEstoque;
           p.quantidadeEmEstoqueReservado = e.quantidadeEmEstoqueReservado ?? p.quantidadeEmEstoqueReservado;
         }
-      } catch { /* mantém o valor da listagem */ }
-    }));
-  }
+      } catch { semConferir++; }
+    }
+  };
+  await Promise.all(Array.from({ length: simultaneas }, trabalhador));
+  return semConferir;
 }
 
 // /api/catalogo?diag=1 mostra só a estrutura das respostas do Hiper (sem preços, estoque ou chave).
@@ -194,8 +204,8 @@ export default async (req, context) => {
   }
   try {
     const inicio = Date.now();
-    const produtos = await buscarCatalogo();
-    return new Response(JSON.stringify({ atualizado: new Date().toISOString(), tempoMs: Date.now() - inicio, produtos }), {
+    const { produtos, semConferir } = await buscarCatalogo(inicio);
+    return new Response(JSON.stringify({ atualizado: new Date().toISOString(), tempoMs: Date.now() - inicio, semConferir, produtos }), {
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
         'Cache-Control': 'public, max-age=0, must-revalidate',
