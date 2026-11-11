@@ -143,7 +143,28 @@ async function diagnostico() {
   return out;
 }
 
+// /api/catalogo?cod=3003 consulta um produto direto no Hiper, sem cache: compara o estoque da listagem
+// com o da rota de estoque, para achar onde a mudança não chegou.
+async function diagnosticoProduto(cod) {
+  const out = { cod, consultadoEm: new Date().toISOString() };
+  try {
+    const todos = await listarPaginado();
+    const p = todos.find(x => String(x.codigo) === cod);
+    if (!p) return { ...out, listagem: 'produto não encontrado na listagem da Loja Virtual' };
+    out.listagem = { nome: p.nome, ativo: p.ativo, removido: p.removido, preco: p.preco, quantidadeEmEstoque: p.quantidadeEmEstoque, quantidadeEmEstoqueReservado: p.quantidadeEmEstoqueReservado };
+    try {
+      const e = await chamar(`/estoques/pontoDeSincronizacao?ProdutoId=${encodeURIComponent(p.id)}`);
+      out.rotaDeEstoque = { quantidadeEmEstoque: e.quantidadeEmEstoque, pontoDeSincronizacao: e.pontoDeSincronizacao };
+    } catch (e) { out.rotaDeEstoque = e.message; }
+  } catch (e) { out.erro = e.message; }
+  return out;
+}
+
 export default async (req) => {
+  const cod = new URL(req.url).searchParams.get('cod');
+  if (cod && /^\d{1,10}$/.test(cod)) {
+    return new Response(JSON.stringify(await diagnosticoProduto(cod), null, 1), { headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store', 'Netlify-CDN-Cache-Control': 'no-store' } });
+  }
   if (new URL(req.url).searchParams.get('diag') === '1') {
     return new Response(JSON.stringify(await diagnostico(), null, 1), { headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' } });
   }
