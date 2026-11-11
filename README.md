@@ -12,7 +12,7 @@ O site busca preço e estoque direto no Hiper, pela API da Loja Virtual (`netlif
 
 ## Pedidos entram no Hiper (`netlify/functions/pedido.mjs`, `/api/pedido`)
 Ao clicar em "Enviar pedido pelo WhatsApp":
-1. O site manda ao servidor só código e quantidade dos itens, com nome, CNPJ/CPF, WhatsApp, município e forma de pagamento.
+1. O site manda ao servidor só código e quantidade dos itens, com nome, CNPJ/CPF, WhatsApp e município (a forma de pagamento é combinada no atendimento).
 2. O servidor busca os preços no Hiper (com o preço de atacado por quantidade) e cria o **pedido de venda em aberto** no Hiper, ligado ao cliente pelo CNPJ/CPF (cliente novo é cadastrado pelo Hiper). O número do site (ex.: `JD-261111-1430-AB`) vai no campo "número do pedido" e na observação.
 3. O WhatsApp abre com o resumo, que serve de alerta para a equipe: "✅ Registrado no sistema Hiper" ou "⚠️ NÃO registrado — lançar manualmente" se o Hiper falhar.
 - A equipe confere estoque, frete e pagamento antes de faturar; para desistir, cancelar o pedido no Hiper.

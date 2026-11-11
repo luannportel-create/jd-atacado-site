@@ -4,15 +4,6 @@
 // O pedido entra em aberto (não faturado): a equipe confere estoque, frete e pagamento antes de faturar.
 import { IGNORAR, chamar, listarPaginado, precoParaQuantidade } from '../lib/hiper.mjs';
 
-// Formas de pagamento aceitas no site → código do meio de pagamento no Hiper.
-export const PAGAMENTOS = {
-  pix: { id: 12, nome: 'PIX' },
-  dinheiro: { id: 1, nome: 'Dinheiro' },
-  cartao_debito: { id: 5, nome: 'Cartão de débito' },
-  cartao_credito: { id: 4, nome: 'Cartão de crédito' },
-  crediario: { id: 6, nome: 'Boleto / crediário (sujeito a aprovação)' },
-};
-
 const so = s => String(s || '').replace(/\D/g, '');
 const texto = (s, max) => String(s || '').replace(/[\u0000-\u001f]/g, ' ').trim().slice(0, max);
 
@@ -51,17 +42,14 @@ const resposta = (status, corpo) => new Response(JSON.stringify(corpo), {
 export function montarPedido(dados, produtosHiper) {
   if (texto(dados.site, 50)) return { erro: 'Pedido recusado.' }; // campo-isca: só robôs preenchem
   const nome = texto(dados.nome, 80);
-  const estabelecimento = texto(dados.estabelecimento, 80);
   const telefone = so(dados.telefone).slice(0, 13);
   const municipio = texto(dados.municipio, 60);
   const obs = texto(dados.obs, 400);
   const numero = texto(dados.numero, 30).replace(/[^\w-]/g, '');
-  const pagamento = PAGAMENTOS[dados.pagamento];
   if (!nome) return { erro: 'Informe o nome do responsável.' };
   if (!documentoValido(dados.documento)) return { erro: 'CNPJ ou CPF inválido.' };
   if (telefone.length < 10) return { erro: 'Informe o telefone com DDD.' };
   if (!municipio) return { erro: 'Informe o município.' };
-  if (!pagamento) return { erro: 'Escolha a forma de pagamento.' };
   if (!Array.isArray(dados.itens) || !dados.itens.length || dados.itens.length > 80) return { erro: 'Pedido sem itens.' };
 
   const porCodigo = new Map(produtosHiper
@@ -83,8 +71,6 @@ export function montarPedido(dados, produtosHiper) {
     `Pedido pelo site ${numero}`.trim(),
     `Tel: ${telefone}`,
     `Município: ${municipio}`,
-    estabelecimento && `Estabelecimento: ${estabelecimento}`,
-    `Pagamento: ${pagamento.nome}`,
     obs && `Obs: ${obs}`,
   ].filter(Boolean).join(' | ');
 
@@ -96,11 +82,10 @@ export function montarPedido(dados, produtosHiper) {
         documento: so(dados.documento),
         email: '',
         inscricaoEstadual: '',
-        nomeDoCliente: estabelecimento || nome,
-        nomeFantasia: estabelecimento,
+        nomeDoCliente: nome,
+        nomeFantasia: '',
       },
       itens: itens.map(({ _cod, ...i }) => i),
-      meiosDePagamento: [{ idMeioDePagamento: pagamento.id, parcelas: 1, valor: total }],
       numeroPedidoDeVenda: numero,
       observacaoDoPedidoDeVenda: observacao.slice(0, 500),
       valorDoFrete: 0,
