@@ -3,6 +3,8 @@
 // A resposta fica em cache por 10 minutos, então o Hiper é consultado poucas vezes por hora.
 const API = 'https://ms-ecommerce.hiper.com.br/api/v1';
 const CACHE_SEGUNDOS = 600;
+// Cadastros internos do Hiper que não são produtos de venda.
+const IGNORAR = new Set(['3002']);
 
 let token = null;
 let tokenExpira = 0;
@@ -78,7 +80,7 @@ function resumir(p) {
   const faixas = p.atacadoAtivo && Array.isArray(p.precoAtacado?.precos)
     ? p.precoAtacado.precos
         .map(f => ({ qtd: Number(f.quantidade), preco: Number(f.precoUnitario) }))
-        .filter(f => f.qtd > 1 && f.preco > 0)
+        .filter(f => f.qtd > 1 && f.preco > 0 && f.preco < preco && f.preco >= preco * 0.5) // trava: ignora desconto acima de 50% (provável erro de cadastro)
         .sort((a, b) => a.qtd - b.qtd)
     : [];
   return {
@@ -123,7 +125,9 @@ export async function buscarCatalogo() {
       throw new Error(`${e.message} || reserva: ${e2.message}`);
     }
   }
-  return todos.filter(p => p.ativo !== false && p.removido !== true).map(resumir);
+  return todos
+    .filter(p => p.ativo !== false && p.removido !== true && !IGNORAR.has(String(p.codigo)))
+    .map(resumir);
 }
 
 // /api/catalogo?diag=1 mostra só a estrutura das respostas do Hiper (sem preços, estoque ou chave).
