@@ -49,6 +49,14 @@ for (const linha of texto.split(/\r?\n/)) {
   });
 }
 
+// Produtos cadastrados em dados/produtos.json que ainda não estão na planilha: entram ocultos e
+// aparecem quando a API do Hiper os entregar, já com nome, categoria e foto certos.
+const naPlanilha = new Set(produtos.map(p => p.cod));
+for (const [cod, info] of Object.entries(cfg.produtos)) {
+  if (naPlanilha.has(cod) || (cfg.ignorar || []).includes(cod)) continue;
+  produtos.push({ cod, nome: info.nome, emb: info.emb, cat: info.cat, preco: null, disp: false, foto: info.foto || null, oculto: true });
+}
+
 const ordem = [...cfg.categorias, 'Outros'];
 produtos.sort((a, b) => (ordem.indexOf(a.cat) - ordem.indexOf(b.cat)) || a.nome.localeCompare(b.nome, 'pt-BR') || a.emb.localeCompare(b.emb));
 

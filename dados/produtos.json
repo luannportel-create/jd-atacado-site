@@ -833,6 +833,18 @@
    "emb": "200g",
    "cat": "Frios e congelados",
    "foto": "3137-delice-peru-real-lat.webp"
+  },
+  "3138": {
+   "nome": "Carne em Conserva Bertin",
+   "emb": "24x320g",
+   "cat": "Conservas e enlatados",
+   "foto": "3138-carne-conserva-bertin.webp"
+  },
+  "3139": {
+   "nome": "Composto Lácteo Milkbom",
+   "emb": "400g",
+   "cat": "Leites e derivados",
+   "foto": "3139-milkbom-400g.webp"
   }
  }
 }

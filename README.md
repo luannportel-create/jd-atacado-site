@@ -30,7 +30,7 @@ Ao clicar em "Enviar pedido pelo WhatsApp":
 - Cada envio gera uma publicação (15 créditos do plano grátis do Netlify): envie no máximo 1–2 vezes por semana.
 
 ## Nome, categoria e foto de cada produto
-Ficam em `dados/produtos.json`, pelo código do Hiper. Produto novo que ainda não está lá entra no site com o nome do Hiper na categoria "Outros".
+Ficam em `dados/produtos.json`, pelo código do Hiper. Produto novo que ainda não está lá entra no site com o nome do Hiper na categoria "Outros". Ao cadastrar um produto novo aqui (código, nome, embalagem, categoria, foto), ele aparece assim que a API do Hiper o entregar, mesmo que não esteja na planilha.
 Fotos ficam em `imagens/`, em `.webp`, 400×400 px.
 
 Para testar localmente: `node scripts/gerar-catalogo.js` e abrir `index.html`.
