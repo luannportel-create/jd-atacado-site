@@ -140,7 +140,8 @@
   "3022": {
    "nome": "Trigo com Fermento Trigolar",
    "emb": "10x1kg",
-   "cat": "Arroz, feijão e farinhas"
+   "cat": "Arroz, feijão e farinhas",
+   "foto": "3022-trigo-com-fermento-trigolar.webp"
   },
   "3023": {
    "nome": "Trigo sem Fermento Dona Maria",
@@ -151,7 +152,8 @@
   "3024": {
    "nome": "Trigo com Fermento Dona Maria",
    "emb": "10x1kg",
-   "cat": "Arroz, feijão e farinhas"
+   "cat": "Arroz, feijão e farinhas",
+   "foto": "3024-trigo-com-fermento-dona-maria.webp"
   },
   "3025": {
    "nome": "Molho de Tomate Pomarola Tradicional",
@@ -179,7 +181,8 @@
   "3029": {
    "nome": "Macarrão Espaguete Bonsabor",
    "emb": "14x400g",
-   "cat": "Massas e instantâneos"
+   "cat": "Massas e instantâneos",
+   "foto": "3029-espaguete-bonsabor.webp"
   },
   "3030": {
    "nome": "Flocão Dona Clara",
@@ -190,7 +193,8 @@
   "3031": {
    "nome": "Flocão Maratá",
    "emb": "20x500g",
-   "cat": "Arroz, feijão e farinhas"
+   "cat": "Arroz, feijão e farinhas",
+   "foto": "3031-flocao-marata.webp"
   },
   "3032": {
    "nome": "Cup Noodles Galinha Caipira",
