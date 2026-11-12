@@ -3,8 +3,9 @@
 const API = 'https://ms-ecommerce.hiper.com.br/api/v1';
 // Cadastros internos do Hiper que não são produtos de venda.
 export const IGNORAR = new Set(['3002']);
-// Até este disponível o site informa o máximo que dá para pedir (trava do carrinho). Acima, nenhum número sai.
-const LIMITE_MAXIMO = () => Number(process.env.SITE_LIMITE_ESTOQUE) || 50;
+// O site recebe o máximo disponível de cada item para travar o carrinho; o número só aparece para o cliente
+// quando ele tenta passar dele. (Opcional: SITE_LIMITE_ESTOQUE para só enviar o máximo abaixo de um valor.)
+const LIMITE_MAXIMO = () => Number(process.env.SITE_LIMITE_ESTOQUE) || Infinity;
 
 let token = null;
 let tokenExpira = 0;

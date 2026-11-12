@@ -16,7 +16,7 @@ Ao clicar em "Enviar pedido pelo WhatsApp":
 2. O servidor busca os preços no Hiper (com o preço de atacado por quantidade) e cria o **pedido de venda em aberto** no Hiper no **cliente-coringa "PEDIDO DO SITE - TROCAR CLIENTE"** (CNPJ da JD). Motivo: a API do Hiper sobrescreve o cadastro do cliente com os dados do pedido, então dados de clientes reais nunca são enviados. A equipe troca o cliente no pedido antes de faturar. O número do site (ex.: `JD-261111-1430-AB`) vai no campo "número do pedido" e na observação.
 3. O WhatsApp abre com o resumo (nome, CNPJ/CPF, telefone, município), que serve de alerta para a equipe: "✅ Lançado no Hiper … trocar cliente" ou "⚠️ NÃO registrado — lançar manualmente" se o Hiper falhar.
 - A equipe confere estoque, frete e pagamento antes de faturar; para desistir, cancelar o pedido no Hiper.
-- Trava de estoque: itens com até 50 disponíveis (`SITE_LIMITE_ESTOQUE`) têm o botão + limitado ao disponível; na hora do envio o servidor confere o disponível atual no Hiper e, se passou, não cria o pedido e o carrinho é ajustado.
+- Trava de estoque: nenhum número aparece até o cliente tentar passar do disponível; aí surge "Só temos X unidades disponíveis" e o + trava (libera ao diminuir); na hora do envio o servidor confere o disponível atual no Hiper e, se passou, não cria o pedido e o carrinho é ajustado.
 - Proteções: preço sempre do Hiper (o navegador não define preço), CNPJ/CPF validado, campo-isca contra robôs, até 5 pedidos por aparelho a cada 10 min.
 - Os dados do cliente ficam salvos no aparelho dele para a próxima compra.
 
