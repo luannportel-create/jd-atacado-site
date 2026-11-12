@@ -135,7 +135,8 @@
   "3021": {
    "nome": "Trigo sem Fermento Trigolar",
    "emb": "10x1kg",
-   "cat": "Arroz, feijão e farinhas"
+   "cat": "Arroz, feijão e farinhas",
+   "foto": "3021-trigo-sem-fermento-trigolar.webp"
   },
   "3022": {
    "nome": "Trigo com Fermento Trigolar",
@@ -284,12 +285,14 @@
   "3046": {
    "nome": "Mingau Nutrilon Multicereais",
    "emb": "12x180g",
-   "cat": "Achocolatados e mingaus"
+   "cat": "Achocolatados e mingaus",
+   "foto": "3046-nutrilon-multicereais.webp"
   },
   "3047": {
    "nome": "Mingau Nutrilon Banana e Maçã",
    "emb": "12x180g",
-   "cat": "Achocolatados e mingaus"
+   "cat": "Achocolatados e mingaus",
+   "foto": "3047-nutrilon-banana-maca.webp"
   },
   "3048": {
    "nome": "Leite Condensado Mococa",
@@ -377,7 +380,8 @@
   "3062": {
    "nome": "Café Santa Clara",
    "emb": "50x100g",
-   "cat": "Cafés"
+   "cat": "Cafés",
+   "foto": "3062-cafe-santa-clara-100g.webp"
   },
   "3063": {
    "nome": "Batata Palha Qualimax Tradicional",
@@ -535,7 +539,8 @@
   "3090": {
    "nome": "Café Maratá",
    "emb": "50x100g",
-   "cat": "Cafés"
+   "cat": "Cafés",
+   "foto": "3090-cafe-marata-100g.webp"
   },
   "3091": {
    "nome": "Palha de Aço Assolan",
