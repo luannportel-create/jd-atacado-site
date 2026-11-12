@@ -680,7 +680,8 @@
   "3112": {
    "nome": "Desinfetante Brinort Pinho",
    "emb": "6x2L",
-   "cat": "Limpeza e higiene"
+   "cat": "Limpeza e higiene",
+   "foto": "3112-desinfetante-brinort-pinho.webp"
   },
   "3113": {
    "nome": "Feijão Rajado Kicaldo",
@@ -757,17 +758,20 @@
   "3125": {
    "nome": "Pó Descolorante Alyne Aloe Vera",
    "emb": "12x20g",
-   "cat": "Limpeza e higiene"
+   "cat": "Limpeza e higiene",
+   "foto": "3125-alyne-aloe-vera.webp"
   },
   "3126": {
    "nome": "Pó Descolorante Alyne Camomila",
    "emb": "12x20g",
-   "cat": "Limpeza e higiene"
+   "cat": "Limpeza e higiene",
+   "foto": "3126-alyne-camomila.webp"
   },
   "3127": {
    "nome": "Pó Descolorante Alyne Óleo de Argan",
    "emb": "12x20g",
-   "cat": "Limpeza e higiene"
+   "cat": "Limpeza e higiene",
+   "foto": "3127-alyne-oleo-argan.webp"
   },
   "3128": {
    "nome": "Suco Jandaia Caju",
@@ -778,7 +782,8 @@
   "3129": {
    "nome": "Talco Barla",
    "emb": "12x140g",
-   "cat": "Limpeza e higiene"
+   "cat": "Limpeza e higiene",
+   "foto": "3129-talco-barla.webp"
   },
   "3130": {
    "nome": "Amaciante Brinort Toque Suave",
