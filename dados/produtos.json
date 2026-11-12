@@ -416,7 +416,8 @@
   "3068": {
    "nome": "Wafer Morango Amori",
    "emb": "30x80g",
-   "cat": "Biscoitos"
+   "cat": "Biscoitos",
+   "foto": "3068-wafer-amori-morango.webp"
   },
   "3069": {
    "nome": "Cup Noodles Costela",
@@ -427,7 +428,8 @@
   "3070": {
    "nome": "Biscoito Recheado Morango Amori",
    "emb": "36x125g",
-   "cat": "Biscoitos"
+   "cat": "Biscoitos",
+   "foto": "3070-biscoito-amori-morango.webp"
   },
   "3071": {
    "nome": "Biscoito Recheado Chocolate Amori",
@@ -528,7 +530,8 @@
   "3088": {
    "nome": "Batata Pringles Original",
    "emb": "18x104g",
-   "cat": "Snacks"
+   "cat": "Snacks",
+   "foto": "3088-pringles-original.webp"
   },
   "3089": {
    "nome": "Café Kimimo",
@@ -716,12 +719,14 @@
   "3120": {
    "nome": "Rosquinha Hiléia Coco",
    "emb": "30x100g",
-   "cat": "Biscoitos"
+   "cat": "Biscoitos",
+   "foto": "3120-rosquinha-hileia-coco.webp"
   },
   "3121": {
    "nome": "Rosquinha Hiléia Leite",
    "emb": "30x100g",
-   "cat": "Biscoitos"
+   "cat": "Biscoitos",
+   "foto": "3121-rosquinha-hileia-leite.webp"
   },
   "3122": {
    "nome": "Coco Ralado Menina",
