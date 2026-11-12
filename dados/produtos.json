@@ -376,7 +376,7 @@
    "nome": "Sabão em Pó Ala Flor de Lis",
    "emb": "27x400g",
    "cat": "Limpeza e higiene",
-   "foto": "3061-sabao-ala-flor-de-lis.webp"
+   "foto": "3061-sabao-ala-flor-de-lis-400g.webp"
   },
   "3062": {
    "nome": "Café Santa Clara",
@@ -513,12 +513,14 @@
   "3084": {
    "nome": "Amaciante Downy Brisa Intensa",
    "emb": "12x500ml",
-   "cat": "Limpeza e higiene"
+   "cat": "Limpeza e higiene",
+   "foto": "3084-downy-brisa-intensa.webp"
   },
   "3085": {
    "nome": "Amaciante Downy Lírios do Campo",
    "emb": "12x500ml",
-   "cat": "Limpeza e higiene"
+   "cat": "Limpeza e higiene",
+   "foto": "3085-downy-lirios-do-campo.webp"
   },
   "3086": {
    "nome": "Papel Toalha Scala",
@@ -672,7 +674,8 @@
   "3111": {
    "nome": "Desinfetante Brinort Eucalipto",
    "emb": "6x2L",
-   "cat": "Limpeza e higiene"
+   "cat": "Limpeza e higiene",
+   "foto": "3111-desinfetante-brinort-eucalipto.webp"
   },
   "3112": {
    "nome": "Desinfetante Brinort Pinho",
