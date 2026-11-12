@@ -375,7 +375,8 @@
   "3061": {
    "nome": "Sabão em Pó Ala Flor de Lis",
    "emb": "27x400g",
-   "cat": "Limpeza e higiene"
+   "cat": "Limpeza e higiene",
+   "foto": "3061-sabao-ala-flor-de-lis.webp"
   },
   "3062": {
    "nome": "Café Santa Clara",
@@ -464,7 +465,8 @@
   "3076": {
    "nome": "Água Sanitária Brilux",
    "emb": "12x1L",
-   "cat": "Limpeza e higiene"
+   "cat": "Limpeza e higiene",
+   "foto": "3076-agua-sanitaria-brilux.webp"
   },
   "3077": {
    "nome": "Água Sanitária Econômica",
@@ -493,17 +495,20 @@
   "3081": {
    "nome": "Amaciante Downy Frescor de Primavera",
    "emb": "12x500ml",
-   "cat": "Limpeza e higiene"
+   "cat": "Limpeza e higiene",
+   "foto": "3081-downy-frescor-primavera.webp"
   },
   "3082": {
    "nome": "Amaciante Downy Sensitive",
    "emb": "12x500ml",
-   "cat": "Limpeza e higiene"
+   "cat": "Limpeza e higiene",
+   "foto": "3082-downy-sensitive.webp"
   },
   "3083": {
    "nome": "Amaciante Downy Verão Tropical",
    "emb": "12x500ml",
-   "cat": "Limpeza e higiene"
+   "cat": "Limpeza e higiene",
+   "foto": "3083-downy-verao-tropical.webp"
   },
   "3084": {
    "nome": "Amaciante Downy Brisa Intensa",
