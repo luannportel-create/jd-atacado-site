@@ -164,7 +164,8 @@
   "3026": {
    "nome": "Molho de Tomate Pomarola Tradicional",
    "emb": "12x520g",
-   "cat": "Molhos"
+   "cat": "Molhos",
+   "foto": "3026-pomarola-520g.webp"
   },
   "3027": {
    "nome": "Arroz Branco Caçarola",
@@ -259,7 +260,8 @@
   "3042": {
    "nome": "Mucilon Arroz",
    "emb": "12x180g",
-   "cat": "Achocolatados e mingaus"
+   "cat": "Achocolatados e mingaus",
+   "foto": "3042-mucilon-arroz.webp"
   },
   "3043": {
    "nome": "Mucilon Arroz e Aveia",
@@ -270,12 +272,14 @@
   "3044": {
    "nome": "Mingau Nutrilon Arroz",
    "emb": "12x180g",
-   "cat": "Achocolatados e mingaus"
+   "cat": "Achocolatados e mingaus",
+   "foto": "3044-nutrilon-arroz.webp"
   },
   "3045": {
    "nome": "Mingau Nutrilon Aveia e Arroz",
    "emb": "12x180g",
-   "cat": "Achocolatados e mingaus"
+   "cat": "Achocolatados e mingaus",
+   "foto": "3045-nutrilon-aveia-arroz.webp"
   },
   "3046": {
    "nome": "Mingau Nutrilon Multicereais",
@@ -601,7 +605,8 @@
   "3102": {
    "nome": "Leite em Pó Integral Ninho",
    "emb": "380g",
-   "cat": "Leites e derivados"
+   "cat": "Leites e derivados",
+   "foto": "3102-ninho-380g.webp"
   },
   "3103": {
    "nome": "Chantilly Amélia Tradicional",
