@@ -45,7 +45,8 @@
   "3006": {
    "nome": "Calabresa Sadia",
    "emb": "6x2,5kg",
-   "cat": "Frios e congelados"
+   "cat": "Frios e congelados",
+   "foto": "3006-calabresa-sadia.webp"
   },
   "3007": {
    "nome": "Salsicha Guibon",
@@ -104,7 +105,8 @@
   "3016": {
    "nome": "Coxa e Sobrecoxa Guibon",
    "emb": "18kg",
-   "cat": "Frios e congelados"
+   "cat": "Frios e congelados",
+   "foto": "3016-coxa-sobrecoxa-guibon.webp"
   },
   "3017": {
    "nome": "Carne em Conserva Palatare",
@@ -127,7 +129,8 @@
   "3020": {
    "nome": "Carne em Conserva Oderich",
    "emb": "24x320g",
-   "cat": "Conservas e enlatados"
+   "cat": "Conservas e enlatados",
+   "foto": "3020-carne-conserva-oderich.webp"
   },
   "3021": {
    "nome": "Trigo sem Fermento Trigolar",
@@ -783,14 +786,16 @@
    "foto": "3135-amaciante-brinort-harmonia-do-campo.webp"
   },
   "3136": {
-   "nome": "Queijo Mussarela Real",
+   "nome": "Queijo Mussarela Fatiado Real Lat",
    "emb": "200g",
-   "cat": "Frios e congelados"
+   "cat": "Frios e congelados",
+   "foto": "3136-queijo-mussarela-real-lat.webp"
   },
   "3137": {
-   "nome": "Presunto de Peru Fatiado",
+   "nome": "Delice de Peru Fatiado Real Lat",
    "emb": "200g",
-   "cat": "Frios e congelados"
+   "cat": "Frios e congelados",
+   "foto": "3137-delice-peru-real-lat.webp"
   }
  }
 }
