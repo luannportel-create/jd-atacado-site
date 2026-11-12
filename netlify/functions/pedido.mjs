@@ -2,7 +2,7 @@
 // O navegador manda só código e quantidade; o preço é recalculado aqui com os dados do Hiper,
 // então ninguém consegue mandar um pedido com preço alterado.
 // O pedido entra em aberto (não faturado): a equipe confere estoque, frete e pagamento antes de faturar.
-import { IGNORAR, chamar, listarPaginado, precoParaQuantidade } from '../lib/hiper.mjs';
+import { IGNORAR, chamar, conferirEstoque, listarPaginado, precoParaQuantidade } from '../lib/hiper.mjs';
 
 // O Hiper exige meio de pagamento no pedido. Como o site não pergunta, vai um padrão e a equipe ajusta
 // no faturamento (HIPER_PAGAMENTO_PADRAO no Netlify: 1 Dinheiro, 12 PIX, 6 Crediário...).
@@ -80,7 +80,7 @@ export function montarPedido(dados, produtosHiper) {
     if (!Number.isInteger(qtd) || qtd < 1 || qtd > 999) return { erro: 'Quantidade inválida.' };
     const preco = precoParaQuantidade(p, qtd);
     if (!(preco > 0)) return { erro: `${p.nome} está sem preço; consulte pelo WhatsApp.` };
-    itens.push({ produtoId: p.id, quantidade: qtd, precoUnitarioBruto: preco, precoUnitarioLiquido: preco, _cod: String(p.codigo) });
+    itens.push({ produtoId: p.id, quantidade: qtd, precoUnitarioBruto: preco, precoUnitarioLiquido: preco, _cod: String(p.codigo), _nome: String(p.nome || '') });
   }
   const total = Math.round(itens.reduce((s, i) => s + i.quantidade * i.precoUnitarioLiquido, 0) * 100) / 100;
 
@@ -95,12 +95,12 @@ export function montarPedido(dados, produtosHiper) {
 
   return {
     total,
-    itens: itens.map(({ _cod, ...i }) => ({ ...i, cod: _cod })),
+    itens: itens.map(({ _cod, _nome, ...i }) => ({ ...i, cod: _cod, nome: _nome })),
     pedido: {
       cliente: CLIENTE_CORINGA(),
       enderecoDeCobranca: JD,
       enderecoDeEntrega: JD,
-      itens: itens.map(({ _cod, ...i }) => i),
+      itens: itens.map(({ _cod, _nome, ...i }) => i),
       meiosDePagamento: [{ idMeioDePagamento: PAGAMENTO_PADRAO(), parcelas: 1, valor: total }],
       numeroPedidoDeVenda: numero,
       observacaoDoPedidoDeVenda: observacao.slice(0, 500),
@@ -119,6 +119,9 @@ export default async (req, context) => {
   try {
     const montado = montarPedido(dados, await listarPaginado());
     if (montado.erro) return resposta(400, { erro: montado.erro });
+    // Trava de estoque: confere o disponível atual no Hiper antes de criar o pedido.
+    const ajustes = await conferirEstoque(montado.itens);
+    if (ajustes.length) return resposta(409, { erro: 'Quantidade acima do estoque disponível.', ajustes: ajustes.map(a => ({ cod: a.cod, max: a.max })) });
     const r = await chamar('/pedido-de-venda/', { metodo: 'POST', corpo: montado.pedido });
     if (r?.errors?.length) return resposta(502, { erro: `Hiper recusou o pedido: ${r.errors.join(' | ').slice(0, 300)}` });
     return resposta(200, { ok: true, id: r?.id || null, mensagem: r?.message || null, total: montado.total, itens: montado.itens.map(i => ({ cod: i.cod, qtd: i.quantidade, preco: i.precoUnitarioLiquido })) });

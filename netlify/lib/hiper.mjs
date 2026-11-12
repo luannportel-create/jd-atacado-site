@@ -3,6 +3,8 @@
 const API = 'https://ms-ecommerce.hiper.com.br/api/v1';
 // Cadastros internos do Hiper que não são produtos de venda.
 export const IGNORAR = new Set(['3002']);
+// Até este disponível o site informa o máximo que dá para pedir (trava do carrinho). Acima, nenhum número sai.
+const LIMITE_MAXIMO = () => Number(process.env.SITE_LIMITE_ESTOQUE) || 50;
 
 let token = null;
 let tokenExpira = 0;
@@ -106,6 +108,7 @@ export function resumir(p) {
     emb: e ? e[1].toLowerCase().replace(/l$/, 'L') : '',
     preco: Number.isFinite(preco) && preco > 0 ? preco : null,
     disp: disponivel(p) > 0, // a quantidade não sai daqui, só se tem ou não
+    ...(disponivel(p) > 0 && disponivel(p) <= LIMITE_MAXIMO() ? { max: Math.floor(disponivel(p)) } : {}),
     ...(faixas.length ? { atacado: faixas } : {}),
   };
 }
@@ -175,3 +178,18 @@ export async function corrigirReservas(produtos, inicio, simultaneas = 16, prazo
   return semConferir;
 }
 
+
+// Confere no Hiper, na hora do pedido, se cada item tem disponível suficiente (estoque − reservado).
+// Devolve os itens que passaram do disponível, com o máximo possível. Se a consulta de um item falhar, ele não bloqueia o pedido.
+export async function conferirEstoque(itens) {
+  const ajustes = [];
+  await Promise.all(itens.map(async it => {
+    try {
+      const e = await chamar(`/estoques/pontoDeSincronizacao?ProdutoId=${encodeURIComponent(it.produtoId)}`);
+      if (e?.quantidadeEmEstoque == null) return;
+      const max = Math.max(0, Math.floor(disponivel(e)));
+      if (it.quantidade > max) ajustes.push({ cod: it.cod, nome: it.nome, max });
+    } catch { /* sem conferência para este item */ }
+  }));
+  return ajustes;
+}
