@@ -88,7 +88,7 @@
    "nome": "Moela de Frango Sadia",
    "emb": "12x1kg",
    "cat": "Frios e congelados",
-   "foto": "moela-frango-sadia.webp"
+   "foto": "3013-moela-sadia-nova.webp"
   },
   "3014": {
    "nome": "Steak de Frango Perdigão",
@@ -256,7 +256,7 @@
    "nome": "Mucilon Multicereais",
    "emb": "12x180g",
    "cat": "Achocolatados e mingaus",
-   "foto": "produto-mucilon-multicereais.webp"
+   "foto": "3041-mucilon-multicereais-novo.webp"
   },
   "3042": {
    "nome": "Mucilon Arroz",
@@ -268,7 +268,7 @@
    "nome": "Mucilon Arroz e Aveia",
    "emb": "12x180g",
    "cat": "Achocolatados e mingaus",
-   "foto": "mucilon-arroz-aveia.webp"
+   "foto": "3043-mucilon-arroz-aveia-novo.webp"
   },
   "3044": {
    "nome": "Mingau Nutrilon Arroz",
@@ -609,7 +609,8 @@
   "3100": {
    "nome": "Refrigerante Coca-Cola Lata",
    "emb": "12x350ml",
-   "cat": "Bebidas"
+   "cat": "Bebidas",
+   "foto": "3100-coca-cola-lata.webp"
   },
   "3101": {
    "nome": "Leite em Pó Integral Piracanjuba",
@@ -639,7 +640,7 @@
    "nome": "Asa de Frango Sadia",
    "emb": "12x1kg",
    "cat": "Frios e congelados",
-   "foto": "asa-frango-sadia.webp"
+   "foto": "3105-asa-sadia-nova.webp"
   },
   "3106": {
    "nome": "Creme de Avelã Nutella",
@@ -828,7 +829,7 @@
    "foto": "3136-queijo-mussarela-real-lat.webp"
   },
   "3137": {
-   "nome": "Delice de Peru Fatiado Real Lat",
+   "nome": "Presunto de Peru Fatiado Real Lat",
    "emb": "200g",
    "cat": "Frios e congelados",
    "foto": "3137-delice-peru-real-lat.webp"
