@@ -217,7 +217,8 @@
   "3035": {
    "nome": "Nissin Nosso Sabor Carne",
    "emb": "50x74g",
-   "cat": "Massas e instantâneos"
+   "cat": "Massas e instantâneos",
+   "foto": "3035-nissin-carne.webp"
   },
   "3036": {
    "nome": "Óleo de Soja Serra Verde",
@@ -228,12 +229,14 @@
   "3037": {
    "nome": "Óleo de Soja Concórdia",
    "emb": "20x900ml",
-   "cat": "Óleos e açúcar"
+   "cat": "Óleos e açúcar",
+   "foto": "3037-oleo-concordia.webp"
   },
   "3038": {
    "nome": "Açúcar Sonora",
    "emb": "30x1kg",
-   "cat": "Óleos e açúcar"
+   "cat": "Óleos e açúcar",
+   "foto": "3038-acucar-sonora.webp"
   },
   "3039": {
    "nome": "Açúcar Doce Dia",
@@ -244,7 +247,8 @@
   "3040": {
    "nome": "Açúcar Itamarati",
    "emb": "30x1kg",
-   "cat": "Óleos e açúcar"
+   "cat": "Óleos e açúcar",
+   "foto": "3040-acucar-itamarati.webp"
   },
   "3041": {
    "nome": "Mucilon Multicereais",
