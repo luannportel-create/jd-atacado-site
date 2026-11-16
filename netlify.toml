@@ -1,0 +1,4 @@
+# O Netlify gera o catálogo a partir da planilha do Hiper a cada publicação.
+[build]
+  command = "node scripts/gerar-catalogo.js"
+  publish = "."

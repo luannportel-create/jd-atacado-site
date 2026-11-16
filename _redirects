@@ -1,0 +1,6 @@
+# Arquivos internos: não ficam acessíveis pelo site (a planilha tem quantidades em estoque).
+/dados/*        /404.html  404!
+/scripts/*      /404.html  404!
+/*.csv          /404.html  404!
+/netlify.toml   /404.html  404!
+/README.md      /404.html  404!

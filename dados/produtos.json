@@ -1,0 +1,850 @@
+{
+ "_leia": "Nome, embalagem, categoria e foto de cada produto, pelo código do Hiper. Preço e estoque vêm da planilha exportada do Hiper.",
+ "categorias": [
+  "Frios e congelados",
+  "Conservas e enlatados",
+  "Arroz, feijão e farinhas",
+  "Massas e instantâneos",
+  "Molhos",
+  "Óleos e açúcar",
+  "Leites e derivados",
+  "Achocolatados e mingaus",
+  "Cafés",
+  "Margarinas",
+  "Biscoitos",
+  "Snacks",
+  "Doces e complementos",
+  "Limpeza e higiene",
+  "Papéis",
+  "Bebidas",
+  "Descartáveis",
+  "Fraldas"
+ ],
+ "ignorar": [
+  "3002"
+ ],
+ "produtos": {
+  "3003": {
+   "nome": "Frango Maringá",
+   "emb": "20kg",
+   "cat": "Frios e congelados",
+   "foto": "produto-frango-maringa.webp"
+  },
+  "3004": {
+   "nome": "Frango Americano",
+   "emb": "20kg",
+   "cat": "Frios e congelados",
+   "foto": "americano-frango.webp"
+  },
+  "3005": {
+   "nome": "Calabresa Perdigão",
+   "emb": "4x2,5kg",
+   "cat": "Frios e congelados",
+   "foto": "perdigao-calabresa.webp"
+  },
+  "3006": {
+   "nome": "Calabresa Sadia",
+   "emb": "6x2,5kg",
+   "cat": "Frios e congelados",
+   "foto": "3006-calabresa-sadia.webp"
+  },
+  "3007": {
+   "nome": "Salsicha Guibon",
+   "emb": "4x4,5kg",
+   "cat": "Frios e congelados",
+   "foto": "produto-salsicha-guibon.webp"
+  },
+  "3008": {
+   "nome": "Salsicha Perdigão",
+   "emb": "4x5kg",
+   "cat": "Frios e congelados",
+   "foto": "produto-salsicha-perdigao.webp"
+  },
+  "3009": {
+   "nome": "Linguiça de Frango Aurora",
+   "emb": "5kg",
+   "cat": "Frios e congelados",
+   "foto": "linguica-aurora.webp"
+  },
+  "3010": {
+   "nome": "Peito de Frango Sadia",
+   "emb": "12x1kg",
+   "cat": "Frios e congelados",
+   "foto": "produto-peito-de-frango-sadia.webp"
+  },
+  "3011": {
+   "nome": "Sobrecoxa de Frango Sadia",
+   "emb": "12x1kg",
+   "cat": "Frios e congelados",
+   "foto": "sobrecoxa-sadia.webp"
+  },
+  "3012": {
+   "nome": "Coxa de Frango Sadia",
+   "emb": "12x1kg",
+   "cat": "Frios e congelados",
+   "foto": "coxa-sadia.webp"
+  },
+  "3013": {
+   "nome": "Moela de Frango Sadia",
+   "emb": "12x1kg",
+   "cat": "Frios e congelados",
+   "foto": "3013-moela-sadia-nova.webp"
+  },
+  "3014": {
+   "nome": "Steak de Frango Perdigão",
+   "emb": "45x100g",
+   "cat": "Frios e congelados",
+   "foto": "perdigao-steak.webp"
+  },
+  "3015": {
+   "nome": "Hambúrguer Misto Rezende",
+   "emb": "36x56g",
+   "cat": "Frios e congelados",
+   "foto": "hamburguer-rezende.webp"
+  },
+  "3016": {
+   "nome": "Coxa e Sobrecoxa Guibon",
+   "emb": "18kg",
+   "cat": "Frios e congelados",
+   "foto": "3016-coxa-sobrecoxa-guibon.webp"
+  },
+  "3017": {
+   "nome": "Carne em Conserva Palatare",
+   "emb": "24x320g",
+   "cat": "Conservas e enlatados",
+   "foto": "produto-carne-em-conserva-palatare.webp"
+  },
+  "3018": {
+   "nome": "Carne em Conserva Anglo",
+   "emb": "24x320g",
+   "cat": "Conservas e enlatados",
+   "foto": "produto-carne-em-conserva-anglo.webp"
+  },
+  "3019": {
+   "nome": "Carne em Conserva Target",
+   "emb": "24x320g",
+   "cat": "Conservas e enlatados",
+   "foto": "produto-carne-em-conserva-target.webp"
+  },
+  "3020": {
+   "nome": "Carne em Conserva Oderich",
+   "emb": "24x320g",
+   "cat": "Conservas e enlatados",
+   "foto": "3020-carne-conserva-oderich.webp"
+  },
+  "3021": {
+   "nome": "Trigo sem Fermento Trigolar",
+   "emb": "10x1kg",
+   "cat": "Arroz, feijão e farinhas",
+   "foto": "3021-trigo-sem-fermento-trigolar.webp"
+  },
+  "3022": {
+   "nome": "Trigo com Fermento Trigolar",
+   "emb": "10x1kg",
+   "cat": "Arroz, feijão e farinhas",
+   "foto": "3022-trigo-com-fermento-trigolar.webp"
+  },
+  "3023": {
+   "nome": "Trigo sem Fermento Dona Maria",
+   "emb": "10x1kg",
+   "cat": "Arroz, feijão e farinhas",
+   "foto": "3023-trigo-dona-maria.webp"
+  },
+  "3024": {
+   "nome": "Trigo com Fermento Dona Maria",
+   "emb": "10x1kg",
+   "cat": "Arroz, feijão e farinhas",
+   "foto": "3024-trigo-com-fermento-dona-maria.webp"
+  },
+  "3025": {
+   "nome": "Molho de Tomate Pomarola Tradicional",
+   "emb": "27x260g",
+   "cat": "Molhos",
+   "foto": "produto-pomarola-tradicional.webp"
+  },
+  "3026": {
+   "nome": "Molho de Tomate Pomarola Tradicional",
+   "emb": "12x520g",
+   "cat": "Molhos",
+   "foto": "3026-pomarola-520g.webp"
+  },
+  "3027": {
+   "nome": "Arroz Branco Caçarola",
+   "emb": "30x1kg",
+   "cat": "Arroz, feijão e farinhas",
+   "foto": "produto-arroz-branco-cacarola.webp"
+  },
+  "3028": {
+   "nome": "Macarrão Q'Delícia",
+   "emb": "20x400g",
+   "cat": "Massas e instantâneos",
+   "foto": "produto-macarrao-q-delicia.webp"
+  },
+  "3029": {
+   "nome": "Macarrão Espaguete Bonsabor",
+   "emb": "14x400g",
+   "cat": "Massas e instantâneos",
+   "foto": "3029-espaguete-bonsabor.webp"
+  },
+  "3030": {
+   "nome": "Flocão Dona Clara",
+   "emb": "30x500g",
+   "cat": "Arroz, feijão e farinhas",
+   "foto": "produto-flocao-dona-clara.webp"
+  },
+  "3031": {
+   "nome": "Flocão Maratá",
+   "emb": "20x500g",
+   "cat": "Arroz, feijão e farinhas",
+   "foto": "3031-flocao-marata.webp"
+  },
+  "3032": {
+   "nome": "Cup Noodles Galinha Caipira",
+   "emb": "24x69g",
+   "cat": "Massas e instantâneos",
+   "foto": "cup-noodles-galinha.webp"
+  },
+  "3033": {
+   "nome": "Cup Noodles Carne",
+   "emb": "24x69g",
+   "cat": "Massas e instantâneos",
+   "foto": "cup-noodles-carne.webp"
+  },
+  "3034": {
+   "nome": "Nissin Nosso Sabor Galinha Caipira",
+   "emb": "50x74g",
+   "cat": "Massas e instantâneos",
+   "foto": "nissin-miojo-galinha.webp"
+  },
+  "3035": {
+   "nome": "Nissin Nosso Sabor Carne",
+   "emb": "50x74g",
+   "cat": "Massas e instantâneos",
+   "foto": "3035-nissin-carne.webp"
+  },
+  "3036": {
+   "nome": "Óleo de Soja Serra Verde",
+   "emb": "20x900ml",
+   "cat": "Óleos e açúcar",
+   "foto": "produto-oleo-de-soja-serra-verde.webp"
+  },
+  "3037": {
+   "nome": "Óleo de Soja Concórdia",
+   "emb": "20x900ml",
+   "cat": "Óleos e açúcar",
+   "foto": "3037-oleo-concordia.webp"
+  },
+  "3038": {
+   "nome": "Açúcar Sonora",
+   "emb": "30x1kg",
+   "cat": "Óleos e açúcar",
+   "foto": "3038-acucar-sonora.webp"
+  },
+  "3039": {
+   "nome": "Açúcar Doce Dia",
+   "emb": "30x1kg",
+   "cat": "Óleos e açúcar",
+   "foto": "produto-acucar-doce-dia.webp"
+  },
+  "3040": {
+   "nome": "Açúcar Itamarati",
+   "emb": "30x1kg",
+   "cat": "Óleos e açúcar",
+   "foto": "3040-acucar-itamarati.webp"
+  },
+  "3041": {
+   "nome": "Mucilon Multicereais",
+   "emb": "12x180g",
+   "cat": "Achocolatados e mingaus",
+   "foto": "3041-mucilon-multicereais-novo.webp"
+  },
+  "3042": {
+   "nome": "Mucilon Arroz",
+   "emb": "12x180g",
+   "cat": "Achocolatados e mingaus",
+   "foto": "3042-mucilon-arroz.webp"
+  },
+  "3043": {
+   "nome": "Mucilon Arroz e Aveia",
+   "emb": "12x180g",
+   "cat": "Achocolatados e mingaus",
+   "foto": "3043-mucilon-arroz-aveia-novo.webp"
+  },
+  "3044": {
+   "nome": "Mingau Nutrilon Arroz",
+   "emb": "12x180g",
+   "cat": "Achocolatados e mingaus",
+   "foto": "3044-nutrilon-arroz.webp"
+  },
+  "3045": {
+   "nome": "Mingau Nutrilon Aveia e Arroz",
+   "emb": "12x180g",
+   "cat": "Achocolatados e mingaus",
+   "foto": "3045-nutrilon-aveia-arroz.webp"
+  },
+  "3046": {
+   "nome": "Mingau Nutrilon Multicereais",
+   "emb": "12x180g",
+   "cat": "Achocolatados e mingaus",
+   "foto": "3046-nutrilon-multicereais.webp"
+  },
+  "3047": {
+   "nome": "Mingau Nutrilon Banana e Maçã",
+   "emb": "12x180g",
+   "cat": "Achocolatados e mingaus",
+   "foto": "3047-nutrilon-banana-maca.webp"
+  },
+  "3048": {
+   "nome": "Leite Condensado Mococa",
+   "emb": "27x395g",
+   "cat": "Leites e derivados",
+   "foto": "3048-leite-condensado-mococa.webp"
+  },
+  "3049": {
+   "nome": "Leite Condensado Moça",
+   "emb": "27x395g",
+   "cat": "Leites e derivados",
+   "foto": "produto-leite-condensado-moca.webp"
+  },
+  "3050": {
+   "nome": "Mistura Láctea Condensada Mococa",
+   "emb": "27x395g",
+   "cat": "Leites e derivados",
+   "foto": "produto-mistura-lactea-condensada-mococa.webp"
+  },
+  "3051": {
+   "nome": "Mistura de Creme de Leite Mococa",
+   "emb": "27x200g",
+   "cat": "Leites e derivados",
+   "foto": "produto-mistura-creme-de-leite-mococa.webp"
+  },
+  "3052": {
+   "nome": "Creme de Leite Mococa",
+   "emb": "27x200g",
+   "cat": "Leites e derivados",
+   "foto": "produto-creme-de-leite-mococa.webp"
+  },
+  "3053": {
+   "nome": "Composto Lácteo Dobon",
+   "emb": "25x400g",
+   "cat": "Leites e derivados",
+   "foto": "produto-composto-lacteo-dobon.webp"
+  },
+  "3054": {
+   "nome": "Margarina Deline",
+   "emb": "24x250g",
+   "cat": "Margarinas",
+   "foto": "produto-margarina-deline.webp"
+  },
+  "3055": {
+   "nome": "Café Maratá",
+   "emb": "20x250g",
+   "cat": "Cafés",
+   "foto": "produto-cafe-marata.webp"
+  },
+  "3056": {
+   "nome": "Café Santa Clara",
+   "emb": "20x250g",
+   "cat": "Cafés",
+   "foto": "3056-cafe-santa-clara-250g.webp"
+  },
+  "3057": {
+   "nome": "Café Kimimo",
+   "emb": "50x100g",
+   "cat": "Cafés",
+   "foto": "3057-cafe-kimimo-100g.webp"
+  },
+  "3058": {
+   "nome": "Carne Moída Bonacarne",
+   "emb": "20x500g",
+   "cat": "Frios e congelados",
+   "foto": "carne-moida-bonacarne.webp"
+  },
+  "3059": {
+   "nome": "Creme Dental Colgate MPA",
+   "emb": "12x50g",
+   "cat": "Limpeza e higiene",
+   "foto": "produto-creme-dental-colgate-mpa.webp"
+  },
+  "3060": {
+   "nome": "Lava-roupas Brinort Blue",
+   "emb": "6x2L",
+   "cat": "Limpeza e higiene",
+   "foto": "3060-lava-roupas-brinort-blue.webp"
+  },
+  "3061": {
+   "nome": "Sabão em Pó Ala Flor de Lis",
+   "emb": "27x400g",
+   "cat": "Limpeza e higiene",
+   "foto": "3061-sabao-ala-flor-de-lis-400g.webp"
+  },
+  "3062": {
+   "nome": "Café Santa Clara",
+   "emb": "50x100g",
+   "cat": "Cafés",
+   "foto": "3062-cafe-santa-clara-100g.webp"
+  },
+  "3063": {
+   "nome": "Batata Palha Qualimax Tradicional",
+   "emb": "20x100g",
+   "cat": "Snacks",
+   "foto": "3063-batata-palha-qualimax-tradicional.webp"
+  },
+  "3064": {
+   "nome": "Leite Líquido Italac",
+   "emb": "12x1L",
+   "cat": "Leites e derivados",
+   "foto": "produto-leite-liquido-italac.webp"
+  },
+  "3065": {
+   "nome": "Sabão em Pó Ala Lavanda",
+   "emb": "27x400g",
+   "cat": "Limpeza e higiene",
+   "foto": "3065-sabao-po-ala-lavanda.webp"
+  },
+  "3066": {
+   "nome": "Wafer Escureto Richester",
+   "emb": "30x80g",
+   "cat": "Biscoitos",
+   "foto": "3066-wafer-escureto.webp"
+  },
+  "3067": {
+   "nome": "Wafer Chocolate Amori",
+   "emb": "30x80g",
+   "cat": "Biscoitos",
+   "foto": "3067-wafer-amori-chocolate.webp"
+  },
+  "3068": {
+   "nome": "Wafer Morango Amori",
+   "emb": "30x80g",
+   "cat": "Biscoitos",
+   "foto": "3068-wafer-amori-morango.webp"
+  },
+  "3069": {
+   "nome": "Cup Noodles Costela",
+   "emb": "24x69g",
+   "cat": "Massas e instantâneos",
+   "foto": "novo-produto-11.webp"
+  },
+  "3070": {
+   "nome": "Biscoito Recheado Morango Amori",
+   "emb": "36x125g",
+   "cat": "Biscoitos",
+   "foto": "3070-biscoito-amori-morango.webp"
+  },
+  "3071": {
+   "nome": "Biscoito Recheado Chocolate Amori",
+   "emb": "36x125g",
+   "cat": "Biscoitos",
+   "foto": "3071-biscoito-amori-chocolate.webp"
+  },
+  "3072": {
+   "nome": "Fralda Huggies G",
+   "emb": "60 unidades",
+   "cat": "Fraldas",
+   "foto": "novo-produto-10.webp"
+  },
+  "3073": {
+   "nome": "Fralda Huggies M",
+   "emb": "72 unidades",
+   "cat": "Fraldas",
+   "foto": "novo-produto-08.webp"
+  },
+  "3074": {
+   "nome": "Fralda Huggies XXG",
+   "emb": "48 unidades",
+   "cat": "Fraldas",
+   "foto": "novo-produto-09.webp"
+  },
+  "3075": {
+   "nome": "Milho Verde Bonare",
+   "emb": "24x170g",
+   "cat": "Conservas e enlatados",
+   "foto": "novo-produto-07.webp"
+  },
+  "3076": {
+   "nome": "Água Sanitária Brilux",
+   "emb": "12x1L",
+   "cat": "Limpeza e higiene",
+   "foto": "3076-agua-sanitaria-brilux.webp"
+  },
+  "3077": {
+   "nome": "Água Sanitária Econômica",
+   "emb": "12x1L",
+   "cat": "Limpeza e higiene",
+   "foto": "produto-agua-sanitaria-economica.webp"
+  },
+  "3078": {
+   "nome": "Nescau Lata",
+   "emb": "24x200g",
+   "cat": "Achocolatados e mingaus",
+   "foto": "produto-nescau-lata.webp"
+  },
+  "3079": {
+   "nome": "Nescau Lata",
+   "emb": "36x350g",
+   "cat": "Achocolatados e mingaus",
+   "foto": "3079-nescau-350g.webp"
+  },
+  "3080": {
+   "nome": "Copo Descartável Copobras Branco 180ml",
+   "emb": "25x100",
+   "cat": "Descartáveis",
+   "foto": "novo-produto-06.webp"
+  },
+  "3081": {
+   "nome": "Amaciante Downy Frescor de Primavera",
+   "emb": "12x500ml",
+   "cat": "Limpeza e higiene",
+   "foto": "3081-downy-frescor-primavera.webp"
+  },
+  "3082": {
+   "nome": "Amaciante Downy Sensitive",
+   "emb": "12x500ml",
+   "cat": "Limpeza e higiene",
+   "foto": "3082-downy-sensitive.webp"
+  },
+  "3083": {
+   "nome": "Amaciante Downy Verão Tropical",
+   "emb": "12x500ml",
+   "cat": "Limpeza e higiene",
+   "foto": "3083-downy-verao-tropical.webp"
+  },
+  "3084": {
+   "nome": "Amaciante Downy Brisa Intensa",
+   "emb": "12x500ml",
+   "cat": "Limpeza e higiene",
+   "foto": "3084-downy-brisa-intensa.webp"
+  },
+  "3085": {
+   "nome": "Amaciante Downy Lírios do Campo",
+   "emb": "12x500ml",
+   "cat": "Limpeza e higiene",
+   "foto": "3085-downy-lirios-do-campo.webp"
+  },
+  "3086": {
+   "nome": "Papel Toalha Scala",
+   "emb": "2x16un",
+   "cat": "Papéis",
+   "foto": "novo-produto-05.webp"
+  },
+  "3087": {
+   "nome": "Papel Higiênico Girassol",
+   "emb": "4x16un",
+   "cat": "Papéis",
+   "foto": "novo-produto-04.webp"
+  },
+  "3088": {
+   "nome": "Batata Pringles Original",
+   "emb": "18x104g",
+   "cat": "Snacks",
+   "foto": "3088-pringles-original.webp"
+  },
+  "3089": {
+   "nome": "Café Kimimo",
+   "emb": "20x250g",
+   "cat": "Cafés",
+   "foto": "produto-cafe-kimimo.webp"
+  },
+  "3090": {
+   "nome": "Café Maratá",
+   "emb": "50x100g",
+   "cat": "Cafés",
+   "foto": "3090-cafe-marata-100g.webp"
+  },
+  "3091": {
+   "nome": "Palha de Aço Assolan",
+   "emb": "20x45g",
+   "cat": "Limpeza e higiene",
+   "foto": "novo-produto-03.webp"
+  },
+  "3092": {
+   "nome": "Detergente Limpol Coco",
+   "emb": "24x500ml",
+   "cat": "Limpeza e higiene",
+   "foto": "3092-detergente-limpol-coco.webp"
+  },
+  "3093": {
+   "nome": "Detergente Limpol Limão",
+   "emb": "24x500ml",
+   "cat": "Limpeza e higiene",
+   "foto": "3093-detergente-limpol-limao.webp"
+  },
+  "3094": {
+   "nome": "Detergente Limpol Maçã",
+   "emb": "24x500ml",
+   "cat": "Limpeza e higiene",
+   "foto": "3094-detergente-limpol-maca.webp"
+  },
+  "3095": {
+   "nome": "Detergente Limpol Neutro",
+   "emb": "24x500ml",
+   "cat": "Limpeza e higiene",
+   "foto": "3095-detergente-limpol-neutro.webp"
+  },
+  "3096": {
+   "nome": "Água Sanitária Brinort",
+   "emb": "12x1L",
+   "cat": "Limpeza e higiene",
+   "foto": "novo-produto-02.webp"
+  },
+  "3097": {
+   "nome": "Lava-roupas Brinort Green",
+   "emb": "6x2L",
+   "cat": "Limpeza e higiene",
+   "foto": "3097-lava-roupas-brinort-green.webp"
+  },
+  "3098": {
+   "nome": "Papel Higiênico Flor de Lótus",
+   "emb": "4x16un",
+   "cat": "Papéis",
+   "foto": "novo-produto-00.webp"
+  },
+  "3099": {
+   "nome": "Papel Higiênico Flor de Lótus Perfumado",
+   "emb": "4x16un",
+   "cat": "Papéis",
+   "foto": "novo-produto-01.webp"
+  },
+  "3100": {
+   "nome": "Refrigerante Coca-Cola Lata",
+   "emb": "12x350ml",
+   "cat": "Bebidas",
+   "foto": "3100-coca-cola-lata.webp"
+  },
+  "3101": {
+   "nome": "Leite em Pó Integral Piracanjuba",
+   "emb": "25x400g",
+   "cat": "Leites e derivados",
+   "foto": "3101-leite-po-piracanjuba.webp"
+  },
+  "3102": {
+   "nome": "Leite em Pó Integral Ninho",
+   "emb": "380g",
+   "cat": "Leites e derivados",
+   "foto": "3102-ninho-380g.webp"
+  },
+  "3103": {
+   "nome": "Chantilly Amélia Tradicional",
+   "emb": "12x1L",
+   "cat": "Leites e derivados",
+   "foto": "chanty-mix-amelia.webp"
+  },
+  "3104": {
+   "nome": "Batata Ruffles Original",
+   "emb": "14x100g",
+   "cat": "Snacks",
+   "foto": "3104-ruffles-original.webp"
+  },
+  "3105": {
+   "nome": "Asa de Frango Sadia",
+   "emb": "12x1kg",
+   "cat": "Frios e congelados",
+   "foto": "3105-asa-sadia-nova.webp"
+  },
+  "3106": {
+   "nome": "Creme de Avelã Nutella",
+   "emb": "10x140g",
+   "cat": "Doces e complementos",
+   "foto": "produto-nutella.webp"
+  },
+  "3107": {
+   "nome": "Bombom Garoto",
+   "emb": "220g",
+   "cat": "Doces e complementos",
+   "foto": "3107-bombom-garoto.webp"
+  },
+  "3108": {
+   "nome": "Bebida Láctea Mocoquinha",
+   "emb": "27x200ml",
+   "cat": "Leites e derivados",
+   "foto": "produto-mocoquinha.webp"
+  },
+  "3109": {
+   "nome": "Leite Condensado Itambé",
+   "emb": "27x395g",
+   "cat": "Leites e derivados",
+   "foto": "produto-leite-condensado-itambe.webp"
+  },
+  "3110": {
+   "nome": "Creme Dental Colgate MPA",
+   "emb": "12x180g",
+   "cat": "Limpeza e higiene",
+   "foto": "produto-creme-dental-colgate-mpa.webp"
+  },
+  "3111": {
+   "nome": "Desinfetante Brinort Eucalipto",
+   "emb": "6x2L",
+   "cat": "Limpeza e higiene",
+   "foto": "3111-desinfetante-brinort-eucalipto.webp"
+  },
+  "3112": {
+   "nome": "Desinfetante Brinort Pinho",
+   "emb": "6x2L",
+   "cat": "Limpeza e higiene",
+   "foto": "3112-desinfetante-brinort-pinho.webp"
+  },
+  "3113": {
+   "nome": "Feijão Rajado Kicaldo",
+   "emb": "10x1kg",
+   "cat": "Arroz, feijão e farinhas",
+   "foto": "3113-feijao-kicaldo.webp"
+  },
+  "3114": {
+   "nome": "Achocolatado Maratá",
+   "emb": "24x200g",
+   "cat": "Achocolatados e mingaus",
+   "foto": "marata-achocolatado.webp"
+  },
+  "3115": {
+   "nome": "Aveia Qualimax Flocos Finos",
+   "emb": "24x170g",
+   "cat": "Doces e complementos",
+   "foto": "qualimax-aveia-finos.webp"
+  },
+  "3116": {
+   "nome": "Aveia Qualimax Flocos Grossos",
+   "emb": "24x170g",
+   "cat": "Doces e complementos",
+   "foto": "qualimax-aveia-flocos.webp"
+  },
+  "3117": {
+   "nome": "Batata Palha Qualimax Extra Fina",
+   "emb": "20x70g",
+   "cat": "Snacks",
+   "foto": "qualimax-batata.webp"
+  },
+  "3118": {
+   "nome": "Biscoito Hiléia Gostosa",
+   "emb": "10x300g",
+   "cat": "Biscoitos",
+   "foto": "hileia-biscoito.webp"
+  },
+  "3119": {
+   "nome": "Rosquinha Hiléia Chocolate",
+   "emb": "30x100g",
+   "cat": "Biscoitos",
+   "foto": "3119-rosquinha-hileia-chocolate.webp"
+  },
+  "3120": {
+   "nome": "Rosquinha Hiléia Coco",
+   "emb": "30x100g",
+   "cat": "Biscoitos",
+   "foto": "3120-rosquinha-hileia-coco.webp"
+  },
+  "3121": {
+   "nome": "Rosquinha Hiléia Leite",
+   "emb": "30x100g",
+   "cat": "Biscoitos",
+   "foto": "3121-rosquinha-hileia-leite.webp"
+  },
+  "3122": {
+   "nome": "Coco Ralado Menina",
+   "emb": "24x100g",
+   "cat": "Doces e complementos",
+   "foto": "menina-coco.webp"
+  },
+  "3123": {
+   "nome": "Extrato de Tomate Olé Copo",
+   "emb": "12x190g",
+   "cat": "Molhos",
+   "foto": "ole-extrato.webp"
+  },
+  "3124": {
+   "nome": "Feijoada Anglo",
+   "emb": "24x430g",
+   "cat": "Conservas e enlatados",
+   "foto": "anglo-feijoada.webp"
+  },
+  "3125": {
+   "nome": "Pó Descolorante Alyne Aloe Vera",
+   "emb": "12x20g",
+   "cat": "Limpeza e higiene",
+   "foto": "3125-alyne-aloe-vera.webp"
+  },
+  "3126": {
+   "nome": "Pó Descolorante Alyne Camomila",
+   "emb": "12x20g",
+   "cat": "Limpeza e higiene",
+   "foto": "3126-alyne-camomila.webp"
+  },
+  "3127": {
+   "nome": "Pó Descolorante Alyne Óleo de Argan",
+   "emb": "12x20g",
+   "cat": "Limpeza e higiene",
+   "foto": "3127-alyne-oleo-argan.webp"
+  },
+  "3128": {
+   "nome": "Suco Jandaia Caju",
+   "emb": "12x500ml",
+   "cat": "Bebidas",
+   "foto": "jandaia-caju.webp"
+  },
+  "3129": {
+   "nome": "Talco Barla",
+   "emb": "12x140g",
+   "cat": "Limpeza e higiene",
+   "foto": "3129-talco-barla.webp"
+  },
+  "3130": {
+   "nome": "Amaciante Brinort Toque Suave",
+   "emb": "6x2L",
+   "cat": "Limpeza e higiene",
+   "foto": "3130-amaciante-brinort-toque-suave.webp"
+  },
+  "3131": {
+   "nome": "Amaciante Brinort Novo Amanhecer",
+   "emb": "6x2L",
+   "cat": "Limpeza e higiene",
+   "foto": "3131-amaciante-brinort-novo-amanhecer.webp"
+  },
+  "3132": {
+   "nome": "Detergente Limpol Cristal",
+   "emb": "24x500ml",
+   "cat": "Limpeza e higiene",
+   "foto": "3132-detergente-limpol-cristal.webp"
+  },
+  "3133": {
+   "nome": "Biscoito Richester Escureto",
+   "emb": "36x125g",
+   "cat": "Biscoitos",
+   "foto": "3133-biscoito-escureto.webp"
+  },
+  "3134": {
+   "nome": "Amaciante Brinort Premium",
+   "emb": "6x2L",
+   "cat": "Limpeza e higiene",
+   "foto": "3134-amaciante-brinort-premium.webp"
+  },
+  "3135": {
+   "nome": "Amaciante Brinort Harmonia do Campo",
+   "emb": "6x2L",
+   "cat": "Limpeza e higiene",
+   "foto": "3135-amaciante-brinort-harmonia-do-campo.webp"
+  },
+  "3136": {
+   "nome": "Queijo Mussarela Fatiado Real Lat",
+   "emb": "200g",
+   "cat": "Frios e congelados",
+   "foto": "3136-queijo-mussarela-real-lat.webp"
+  },
+  "3137": {
+   "nome": "Presunto de Peru Fatiado Real Lat",
+   "emb": "200g",
+   "cat": "Frios e congelados",
+   "foto": "3137-delice-peru-real-lat.webp"
+  },
+  "3138": {
+   "nome": "Carne em Conserva Bertin",
+   "emb": "24x320g",
+   "cat": "Conservas e enlatados",
+   "foto": "3138-carne-conserva-bertin.webp"
+  },
+  "3139": {
+   "nome": "Composto Lácteo Milkbom",
+   "emb": "400g",
+   "cat": "Leites e derivados",
+   "foto": "3139-milkbom-400g.webp"
+  }
+ }
+}
