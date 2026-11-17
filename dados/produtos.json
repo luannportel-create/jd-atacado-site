@@ -851,6 +851,30 @@
    "emb": "10x1kg",
    "cat": "Arroz, feijão e farinhas",
    "foto": "3140-feijao-carioca-da-casa.webp"
+  },
+  "3141": {
+   "nome": "Composto Lácteo Dobon",
+   "emb": "80x120g",
+   "cat": "Leites e derivados",
+   "foto": "3141-dobon-120g.webp"
+  },
+  "3142": {
+   "nome": "Bolacha Água e Sal Princesinha",
+   "emb": "20x400g",
+   "cat": "Biscoitos",
+   "foto": "3142-bolacha-princesinha-400g.webp"
+  },
+  "3143": {
+   "nome": "Bolacha Água e Sal Princesinha",
+   "emb": "20x300g",
+   "cat": "Biscoitos",
+   "foto": "3143-bolacha-princesinha-300g.webp"
+  },
+  "3144": {
+   "nome": "Bolacha Água e Sal Princesinha",
+   "emb": "20x200g",
+   "cat": "Biscoitos",
+   "foto": "3144-bolacha-princesinha-200g.webp"
   }
  }
 }
