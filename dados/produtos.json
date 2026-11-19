@@ -875,6 +875,30 @@
    "emb": "20x200g",
    "cat": "Biscoitos",
    "foto": "3144-bolacha-princesinha-200g.webp"
+  },
+  "3145": {
+   "nome": "Biscoito Recheado Escureto Richester",
+   "emb": "40x35,6g",
+   "cat": "Biscoitos",
+   "foto": "3145-escureto-35g.webp"
+  },
+  "3146": {
+   "nome": "Biscoito Recheado Amori Morango",
+   "emb": "40x35,6g",
+   "cat": "Biscoitos",
+   "foto": "3146-amori-morango-35g.webp"
+  },
+  "3147": {
+   "nome": "Biscoito Recheado Amori Chocolate",
+   "emb": "40x35,6g",
+   "cat": "Biscoitos",
+   "foto": "3147-amori-chocolate-35g.webp"
+  },
+  "3148": {
+   "nome": "Biscoito Cream Cracker Richester",
+   "emb": "24x350g",
+   "cat": "Biscoitos",
+   "foto": "3148-cream-cracker-richester.webp"
   }
  }
 }
