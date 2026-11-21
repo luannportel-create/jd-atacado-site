@@ -1,3 +1,6 @@
+# Endereço antigo leva ao domínio oficial (as prévias deploy-preview-N--... não são afetadas)
+https://jdmercadoatacado.netlify.app/* https://jdmercado.com.br/:splat 301!
+
 # Arquivos internos: não ficam acessíveis pelo site (a planilha tem quantidades em estoque).
 /dados/*        /404.html  404!
 /scripts/*      /404.html  404!
