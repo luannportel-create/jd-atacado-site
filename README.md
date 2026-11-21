@@ -1,6 +1,6 @@
 # JD Mercado Atacado — site
 
-Catálogo com pedido pelo WhatsApp. Publicado em https://jdmercadoatacado.netlify.app/
+Catálogo com pedido pelo WhatsApp. Publicado em https://jdmercado.com.br/
 
 ## Preço e estoque ao vivo (API do Hiper)
 O site busca preço e estoque direto no Hiper, pela API da Loja Virtual (`netlify/functions/catalogo.mjs`, endereço `/api/catalogo`).
