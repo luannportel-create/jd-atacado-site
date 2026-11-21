@@ -899,6 +899,24 @@
    "emb": "24x350g",
    "cat": "Biscoitos",
    "foto": "3148-cream-cracker-richester.webp"
+  },
+  "3149": {
+   "nome": "Talco Barla",
+   "emb": "12x80g",
+   "cat": "Limpeza e higiene",
+   "foto": "3149-talco-barla-80g.webp"
+  },
+  "3150": {
+   "nome": "Desinfetante Brinort Floral",
+   "emb": "6x2L",
+   "cat": "Limpeza e higiene",
+   "foto": "3150-desinfetante-brinort-floral.webp"
+  },
+  "3151": {
+   "nome": "Leite em Pó Integral Itambé",
+   "emb": "25x400g",
+   "cat": "Leites e derivados",
+   "foto": "3151-itambe-po-400g.webp"
   }
  }
 }
