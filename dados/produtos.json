@@ -1,5 +1,5 @@
 {
- "_leia": "Nome, embalagem, categoria e foto de cada produto, pelo código do Hiper. Preço e estoque vêm da planilha exportada do Hiper.",
+ "_leia": "Nome, embalagem, categoria e foto de cada produto, pelo código do Hiper. Preço, estoque e EMBALAGEM vêm do Hiper ao vivo; embFixa:true mantém a embalagem daqui (quando o Hiper está abreviado ou errado).",
  "categorias": [
   "Frios e congelados",
   "Conservas e enlatados",
@@ -370,7 +370,8 @@
    "nome": "Lava-roupas Brinort Blue",
    "emb": "6x2L",
    "cat": "Limpeza e higiene",
-   "foto": "3060-lava-roupas-brinort-blue.webp"
+   "foto": "3060-lava-roupas-brinort-blue.webp",
+   "embFixa": true
   },
   "3061": {
    "nome": "Sabão em Pó Ala Flor de Lis",
@@ -442,19 +443,22 @@
    "nome": "Fralda Huggies G",
    "emb": "60 unidades",
    "cat": "Fraldas",
-   "foto": "novo-produto-10.webp"
+   "foto": "novo-produto-10.webp",
+   "embFixa": true
   },
   "3073": {
    "nome": "Fralda Huggies M",
    "emb": "72 unidades",
    "cat": "Fraldas",
-   "foto": "novo-produto-08.webp"
+   "foto": "novo-produto-08.webp",
+   "embFixa": true
   },
   "3074": {
    "nome": "Fralda Huggies XXG",
    "emb": "48 unidades",
    "cat": "Fraldas",
-   "foto": "novo-produto-09.webp"
+   "foto": "novo-produto-09.webp",
+   "embFixa": true
   },
   "3075": {
    "nome": "Milho Verde Bonare",
@@ -482,7 +486,7 @@
   },
   "3079": {
    "nome": "Nescau Lata",
-   "emb": "36x350g",
+   "emb": "18x350g",
    "cat": "Achocolatados e mingaus",
    "foto": "3079-nescau-350g.webp"
   },
@@ -526,13 +530,15 @@
    "nome": "Papel Toalha Scala",
    "emb": "2x16un",
    "cat": "Papéis",
-   "foto": "novo-produto-05.webp"
+   "foto": "novo-produto-05.webp",
+   "embFixa": true
   },
   "3087": {
    "nome": "Papel Higiênico Girassol",
    "emb": "4x16un",
    "cat": "Papéis",
-   "foto": "novo-produto-04.webp"
+   "foto": "novo-produto-04.webp",
+   "embFixa": true
   },
   "3088": {
    "nome": "Batata Pringles Original",
@@ -592,13 +598,15 @@
    "nome": "Lava-roupas Brinort Green",
    "emb": "6x2L",
    "cat": "Limpeza e higiene",
-   "foto": "3097-lava-roupas-brinort-green.webp"
+   "foto": "3097-lava-roupas-brinort-green.webp",
+   "embFixa": true
   },
   "3098": {
    "nome": "Papel Higiênico Flor de Lótus",
    "emb": "4x16un",
    "cat": "Papéis",
-   "foto": "novo-produto-00.webp"
+   "foto": "novo-produto-00.webp",
+   "embFixa": true
   },
   "3099": {
    "nome": "Papel Higiênico Flor de Lótus Perfumado",
