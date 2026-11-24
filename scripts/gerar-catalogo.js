@@ -46,6 +46,7 @@ for (const linha of texto.split(/\r?\n/)) {
     preco: Number.isFinite(preco) && preco > 0 ? preco : null,
     disp: estoque > 0,
     foto: info.foto || null,
+    ...(info.embFixa ? { embFixa: true } : {}),
   });
 }
 
