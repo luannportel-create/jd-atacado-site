@@ -925,6 +925,30 @@
    "emb": "25x400g",
    "cat": "Leites e derivados",
    "foto": "3151-itambe-po-400g.webp"
+  },
+  "3152": {
+   "nome": "Fermento Químico em Pó Dr. Oetker",
+   "emb": "10x100g",
+   "cat": "Doces e complementos",
+   "foto": "3152-fermento-dr-oetker.webp"
+  },
+  "3153": {
+   "nome": "Milho de Pipoca Mariza",
+   "emb": "40x250g",
+   "cat": "Arroz, feijão e farinhas",
+   "foto": "3153-pipoca-mariza.webp"
+  },
+  "3154": {
+   "nome": "Bacon Fatiado Real Lat",
+   "emb": "250g",
+   "cat": "Frios e congelados",
+   "foto": "3154-bacon-real-lat.webp"
+  },
+  "3155": {
+   "nome": "Arroz Branco Panelaço",
+   "emb": "30x1kg",
+   "cat": "Arroz, feijão e farinhas",
+   "foto": "3155-arroz-panelaco.webp"
   }
  }
 }
