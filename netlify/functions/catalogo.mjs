@@ -1,6 +1,10 @@
 // Busca preço e estoque no Hiper (API da Loja Virtual) e devolve só o que o site precisa.
 // A resposta fica em cache por 10 minutos, então o Hiper é consultado poucas vezes por hora.
 import { buscarCatalogo, chamar, disponivel, extrairLista, listarPaginado, obterToken } from '../lib/hiper.mjs';
+import { lerCatalogoSalvo, salvarCatalogo } from '../lib/cache.mjs';
+
+// Catálogo salvo pela atualização agendada vale por até 3 h; depois disso, consulta o Hiper na hora.
+const VALIDADE_SALVO_MS = 3 * 60 * 60 * 1000;
 
 const CACHE_SEGUNDOS = 600;
 
@@ -46,9 +50,21 @@ export default async (req, context) => {
     return new Response(JSON.stringify(await diagnostico(), null, 1), { headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' } });
   }
   try {
+    const salvo = await lerCatalogoSalvo();
+    if (salvo?.produtos?.length && Date.now() - Date.parse(salvo.atualizado) < VALIDADE_SALVO_MS) {
+      return new Response(JSON.stringify(salvo), {
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          'Cache-Control': 'public, max-age=0, must-revalidate',
+          'Netlify-CDN-Cache-Control': 'public, durable, s-maxage=120, stale-while-revalidate=600',
+        },
+      });
+    }
     const inicio = Date.now();
     const { produtos, semConferir } = await buscarCatalogo(inicio);
-    return new Response(JSON.stringify({ atualizado: new Date().toISOString(), tempoMs: Date.now() - inicio, semConferir, produtos }), {
+    const dados = { atualizado: new Date().toISOString(), tempoMs: Date.now() - inicio, semConferir, origem: 'ao-vivo', produtos };
+    if (!semConferir && produtos.length) await salvarCatalogo(dados);
+    return new Response(JSON.stringify(dados), {
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
         'Cache-Control': 'public, max-age=0, must-revalidate',

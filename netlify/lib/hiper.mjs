@@ -138,7 +138,7 @@ export async function listarPaginado() {
   return todos;
 }
 
-export async function buscarCatalogo(inicio = Date.now()) {
+export async function buscarCatalogo(inicio = Date.now(), prazoMs = 7500) {
   let todos;
   try {
     todos = await listarPaginado();
@@ -152,7 +152,7 @@ export async function buscarCatalogo(inicio = Date.now()) {
     }
   }
   const ativos = todos.filter(p => p.ativo !== false && p.removido !== true && !IGNORAR.has(String(p.codigo)));
-  const semConferir = await corrigirReservas(ativos, inicio);
+  const semConferir = await corrigirReservas(ativos, inicio, 16, prazoMs);
   return { produtos: ativos.map(resumir), semConferir };
 }
 

@@ -5,6 +5,8 @@ Catálogo com pedido pelo WhatsApp. Publicado em https://jdmercado.com.br/
 ## Preço e estoque ao vivo (API do Hiper)
 O site busca preço e estoque direto no Hiper, pela API da Loja Virtual (`netlify/functions/catalogo.mjs`, endereço `/api/catalogo`).
 - A chave de segurança fica no Netlify, em **Project configuration → Environment variables → `HIPER_CHAVE`**. Ela nunca vai para o navegador.
+- Uma **atualização agendada a cada 15 min** (`netlify/functions/atualizar-catalogo.mjs`, até 30 s) lê preço, estoque e reservas de todos os produtos e salva o catálogo pronto no Netlify Blobs; o site lê esse catálogo na hora. Se ele tiver mais de 3 h, o site consulta o Hiper ao vivo (limite de 10 s).
+- O Netlify publica a pasta `dist/`, montada por `scripts/montar-site.js` (só arquivos públicos).
 - A resposta fica guardada por 10 minutos: mudança de preço no Hiper aparece no site em até ~10 min, **sem republicar e sem gastar créditos de publicação**.
 - Só aparecem produtos marcados para a loja virtual no Hiper, ativos e não removidos. Preço vem da tabela escolhida em Vendas → Loja virtual.
 - Preço por quantidade (preço de atacado do Hiper) aparece no card e é aplicado no pedido.
