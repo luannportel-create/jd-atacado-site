@@ -1,4 +1,4 @@
-# O Netlify gera o catálogo a partir da planilha do Hiper a cada publicação.
+# O Netlify gera o catálogo a partir da planilha do Hiper e monta a pasta pública dist/ a cada publicação.
 [build]
-  command = "node scripts/gerar-catalogo.js"
-  publish = "."
+  command = "node scripts/gerar-catalogo.js && node scripts/montar-site.js"
+  publish = "dist"

@@ -949,6 +949,12 @@
    "emb": "30x1kg",
    "cat": "Arroz, feijão e farinhas",
    "foto": "3155-arroz-panelaco.webp"
+  },
+  "3156": {
+   "nome": "Hambúrguer Friboi",
+   "emb": "36x56g",
+   "cat": "Frios e congelados",
+   "foto": "3156-hamburguer-friboi.webp"
   }
  }
 }
